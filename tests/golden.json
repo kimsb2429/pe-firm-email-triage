@@ -1,0 +1,209 @@
+{
+  "1": {
+    "category": "Deal Flow",
+    "deadline_fired": true,
+    "has_deadline": true,
+    "next_steps_fired": false,
+    "portco_problem_flagged": false,
+    "priority": "High",
+    "reply_draft_fired": true
+  },
+  "10": {
+    "category": "Deal Flow",
+    "deadline_fired": false,
+    "has_deadline": false,
+    "next_steps_fired": false,
+    "portco_problem_flagged": false,
+    "priority": [
+      "High",
+      "Medium"
+    ],
+    "reply_draft_fired": [
+      true,
+      false
+    ]
+  },
+  "11": {
+    "category": "Deal Flow",
+    "deadline_fired": false,
+    "has_deadline": false,
+    "next_steps_fired": false,
+    "portco_problem_flagged": false,
+    "priority": "High",
+    "reply_draft_fired": true
+  },
+  "12": {
+    "category": "Internal",
+    "deadline_fired": true,
+    "has_deadline": true,
+    "next_steps_fired": false,
+    "portco_problem_flagged": false,
+    "priority": "Medium",
+    "reply_draft_fired": false
+  },
+  "13": {
+    "category": "Deal Flow",
+    "deadline_fired": true,
+    "has_deadline": true,
+    "next_steps_fired": false,
+    "portco_problem_flagged": false,
+    "priority": "High",
+    "reply_draft_fired": true
+  },
+  "14": {
+    "category": "Deal Flow",
+    "deadline_fired": false,
+    "has_deadline": false,
+    "next_steps_fired": false,
+    "portco_problem_flagged": false,
+    "priority": "High",
+    "reply_draft_fired": true
+  },
+  "15": {
+    "category": "Other",
+    "deadline_fired": true,
+    "has_deadline": true,
+    "next_steps_fired": false,
+    "portco_problem_flagged": false,
+    "priority": "Low",
+    "reply_draft_fired": false
+  },
+  "16": {
+    "category": "Portfolio Update",
+    "deadline_fired": false,
+    "has_deadline": false,
+    "next_steps_fired": true,
+    "portco_problem_flagged": true,
+    "priority": "High",
+    "reply_draft_fired": true
+  },
+  "17": {
+    "category": "Internal",
+    "deadline_fired": false,
+    "has_deadline": false,
+    "next_steps_fired": false,
+    "portco_problem_flagged": false,
+    "priority": "Low",
+    "reply_draft_fired": false
+  },
+  "18": {
+    "category": "LP Communication",
+    "deadline_fired": false,
+    "has_deadline": false,
+    "next_steps_fired": false,
+    "portco_problem_flagged": false,
+    "priority": [
+      "High",
+      "Medium"
+    ],
+    "reply_draft_fired": [
+      true,
+      false
+    ]
+  },
+  "19": {
+    "category": "Press",
+    "deadline_fired": true,
+    "has_deadline": true,
+    "next_steps_fired": false,
+    "portco_problem_flagged": false,
+    "priority": "Low",
+    "reply_draft_fired": false
+  },
+  "2": {
+    "category": "Portfolio Update",
+    "deadline_fired": false,
+    "has_deadline": false,
+    "next_steps_fired": false,
+    "portco_problem_flagged": false,
+    "priority": [
+      "Medium",
+      "Low"
+    ],
+    "reply_draft_fired": false
+  },
+  "20": {
+    "category": "Portfolio Update",
+    "deadline_fired": false,
+    "has_deadline": false,
+    "next_steps_fired": false,
+    "portco_problem_flagged": false,
+    "priority": "Medium",
+    "reply_draft_fired": false
+  },
+  "3": {
+    "category": "LP Communication",
+    "deadline_fired": false,
+    "has_deadline": false,
+    "next_steps_fired": false,
+    "portco_problem_flagged": false,
+    "priority": [
+      "High",
+      "Medium"
+    ],
+    "reply_draft_fired": [
+      true,
+      false
+    ]
+  },
+  "4": {
+    "category": "Other",
+    "deadline_fired": false,
+    "has_deadline": false,
+    "next_steps_fired": false,
+    "portco_problem_flagged": false,
+    "priority": "Low",
+    "reply_draft_fired": false
+  },
+  "5": {
+    "category": "Internal",
+    "deadline_fired": true,
+    "has_deadline": true,
+    "next_steps_fired": false,
+    "portco_problem_flagged": false,
+    "priority": "Low",
+    "reply_draft_fired": false
+  },
+  "6": {
+    "category": "Deal Flow",
+    "deadline_fired": false,
+    "has_deadline": false,
+    "next_steps_fired": false,
+    "portco_problem_flagged": false,
+    "priority": "Medium",
+    "reply_draft_fired": false
+  },
+  "7": {
+    "category": "Portfolio Update",
+    "deadline_fired": true,
+    "has_deadline": true,
+    "next_steps_fired": true,
+    "portco_problem_flagged": true,
+    "priority": "High",
+    "reply_draft_fired": true
+  },
+  "8": {
+    "category": "Compliance",
+    "deadline_fired": true,
+    "has_deadline": true,
+    "next_steps_fired": false,
+    "portco_problem_flagged": false,
+    "priority": [
+      "High",
+      "Medium"
+    ],
+    "reply_draft_fired": [
+      true,
+      false
+    ]
+  },
+  "9": {
+    "category": "LP Communication",
+    "deadline_fired": true,
+    "has_deadline": true,
+    "next_steps_fired": false,
+    "portco_problem_flagged": false,
+    "priority": "High",
+    "reply_draft_fired": true
+  }
+}

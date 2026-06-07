@@ -1,0 +1,768 @@
+{
+  "run_metadata": {
+    "started_at": "2026-05-19T22:05:48+00:00",
+    "runtime_s": 156.94,
+    "models": {
+      "step1": "claude-haiku-4-5",
+      "step2_default": "claude-sonnet-4-6",
+      "step2_fallback": "claude-haiku-4-5"
+    },
+    "prompt_versions": {
+      "step1_classify": "v1",
+      "step2_act": "v2"
+    },
+    "totals": {
+      "step1_calls": 20,
+      "step2_calls": 15,
+      "step2_skipped": 5,
+      "step2_sonnet_calls": 10,
+      "step2_haiku_calls": 5,
+      "input_tokens": 39023,
+      "output_tokens": 7886,
+      "cache_read_tokens": 18310,
+      "cache_creation_tokens": 0,
+      "errors": 0
+    }
+  },
+  "results": [
+    {
+      "id": 1,
+      "from": "mark.chen@horizoncapital.com",
+      "subject": "Re: Series B interest \u2014 CloudOps AI",
+      "body": "Following up on our conversation from last week. We've completed initial diligence and our partners are aligned on moving forward. Can we schedule a call this week to discuss term sheet timing?",
+      "received_at": "2026-05-19T09:00:00Z",
+      "classification": {
+        "rationale": "This is a follow-up on an active Series B investment opportunity (CloudOps AI) where the sender's firm has completed diligence and is ready to advance to term sheet discussion. The request to schedule a call 'this week' creates a near-term action item. This is clearly Deal Flow (new investment opportunity in motion). Priority is High because an active deal with partner alignment and imminent term sheet discussion materially impacts deal velocity and outcome. The email contains a time-bounded ask ('this week'), so has_deadline is true. No portfolio company problem is indicated, so portco_problem_flagged is false.",
+        "category": "Deal Flow",
+        "priority": "High",
+        "summary": "Horizon Capital has completed Series B diligence on CloudOps AI and seeks to schedule a call this week to discuss term sheet timing.",
+        "has_deadline": true,
+        "portco_problem_flagged": false
+      },
+      "actions": {
+        "rationale": "reply_draft fires because priority is High; deadline fires because has_deadline is true. For reply_draft: I reference Mark by name, acknowledge diligence completion and partner alignment, and propose a concrete next step with a bracketed placeholder for the specific time slot since Alex hasn't provided one. Tone is formal to match a banker/investor counterpart. For deadline: the email says 'this week' \u2014 received Tuesday 2026-05-19, so 'this week' resolves to Friday 2026-05-22 per the EOW convention. action_required is to schedule a call to discuss term sheet timing.",
+        "reply_draft": "Hi Mark, great to hear that Horizon has completed diligence and that your partners are aligned \u2014 that's an encouraging signal for CloudOps AI. I'd be glad to connect this week to walk through term sheet timing; I'm available [insert available times, e.g., Wednesday or Thursday afternoon ET] \u2014 does any of that work for you? Please send over a calendar invite and we can make sure the right people are on the call. Looking forward to it.\n\nBest,\nAlex",
+        "deadline": {
+          "deadline_text": "this week",
+          "deadline_date": "2026-05-22",
+          "deadline_weekday": "Friday",
+          "action_required": "Schedule a call with Horizon Capital to discuss CloudOps AI term sheet timing"
+        },
+        "next_steps": null,
+        "violations": []
+      },
+      "status": "ok",
+      "error": null
+    },
+    {
+      "id": 2,
+      "from": "sarah.williams@portfolioco.com",
+      "subject": "Q1 Operating Update \u2014 Momentum Software",
+      "body": "Hi team, attached is our Q1 board pack. Revenue came in at $4.2M, up 18% QoQ. We missed EBITDA by about 8% due to a one-time infrastructure migration cost. Happy to walk through on our next call.",
+      "received_at": "2026-05-19T09:00:00Z",
+      "classification": {
+        "rationale": "This is a routine quarterly operating update from a portfolio company (Momentum Software) with financial metrics and board materials. Revenue growth is solid (18% QoQ), and the EBITDA miss is explained as a one-time infrastructure cost with no indication of an underlying operational or governance problem. The email is informational with an offer to discuss further but no urgent action item or deadline stated. This is clearly Portfolio Update category, Low priority (standard quarterly reporting), no deadline mentioned, and no portco problem flagged since the miss is explained and temporary.",
+        "category": "Portfolio Update",
+        "priority": "Low",
+        "summary": "Momentum Software Q1 board pack: $4.2M revenue (+18% QoQ), EBITDA missed by 8% due to one-time infrastructure migration cost.",
+        "has_deadline": false,
+        "portco_problem_flagged": false
+      },
+      "actions": {
+        "rationale": null,
+        "reply_draft": null,
+        "deadline": null,
+        "next_steps": null,
+        "violations": []
+      },
+      "status": "ok",
+      "error": null
+    },
+    {
+      "id": 3,
+      "from": "james.thornton@lpfund.com",
+      "subject": "Capital Call Notice Question",
+      "body": "We received the capital call notice dated April 28th. Can you confirm the wire instructions and deadline? We want to make sure we process this on time.",
+      "received_at": "2026-05-19T09:00:00Z",
+      "classification": {
+        "rationale": "This is an LP (Limited Partner) reaching out about a capital call notice\u2014a core LP Communication. The LP is asking for confirmation of wire instructions and deadline for a capital call, which is a standard LP funding obligation. The email references a specific capital call notice (April 28th) and expresses intent to process on time, indicating this is an active funding matter. Priority is High because capital calls are time-sensitive commitments that directly affect fund operations and LP relationships; delays can trigger defaults or penalties. The email contains a deadline reference ('on time') but no explicit date in the body itself, so has_deadline is false (the deadline exists in the referenced notice, not stated here). No portco problem is indicated.",
+        "category": "LP Communication",
+        "priority": "High",
+        "summary": "LP fund requesting confirmation of wire instructions and deadline for capital call notice dated April 28th.",
+        "has_deadline": false,
+        "portco_problem_flagged": false
+      },
+      "actions": {
+        "rationale": "Only reply_draft fired (priority is High). deadline and next_steps are null since has_deadline is false and portco_problem_flagged is false. I'll write a formal reply to James (LP, so formal tone) referencing the April 28th capital call notice, confirming we'll provide wire instructions and the deadline, using placeholders for the specific wire details and deadline date that only the partner can confirm.",
+        "reply_draft": "Hi James,\n\nThank you for reaching out regarding the capital call notice dated April 28th \u2014 we're glad to hear you're moving forward with processing. The wire instructions are as follows: [insert wire instructions], and the funding deadline is [insert deadline date]. Please don't hesitate to reach out if you have any questions or need additional documentation to complete the transfer.\n\nBest regards,\nAlex Carter",
+        "deadline": null,
+        "next_steps": null,
+        "violations": []
+      },
+      "status": "ok",
+      "error": null
+    },
+    {
+      "id": 4,
+      "from": "recruiter@talentfirm.com",
+      "subject": "Top CFO candidates for your review",
+      "body": "Hi, I wanted to share three CFO profiles that match the criteria we discussed. All three have PE-backed company experience. Let me know when you'd like to set up screenings.",
+      "received_at": "2026-05-19T09:00:00Z",
+      "classification": {
+        "rationale": "This is a recruiter outreach offering CFO candidate profiles. It's not from an LP, not about a portfolio company operational issue, not a deal, not compliance, not internal firm business, and not press. This falls squarely into 'Other' \u2014 vendor/recruiter outreach. Priority is Low because there's no time-sensitive deal pressure, capital commitment, or crisis; it's a routine recruiting inquiry with no stated deadline. No deadline is mentioned in the email body or subject. No portfolio company problem is flagged.",
+        "category": "Other",
+        "priority": "Low",
+        "summary": "Recruiter offering three CFO candidates with PE experience for screening consideration.",
+        "has_deadline": false,
+        "portco_problem_flagged": false
+      },
+      "actions": {
+        "rationale": null,
+        "reply_draft": null,
+        "deadline": null,
+        "next_steps": null,
+        "violations": []
+      },
+      "status": "ok",
+      "error": null
+    },
+    {
+      "id": 5,
+      "from": "david.park@internalteam.com",
+      "subject": "Team offsite \u2014 dates and logistics",
+      "body": "Hey, locking in the offsite for June 12-13 in the Hamptons. Can everyone confirm availability by EOW? I'll send hotel info once we have a headcount.",
+      "received_at": "2026-05-19T09:00:00Z",
+      "classification": {
+        "rationale": "This is an internal administrative email from a team member about scheduling and logistics for a company offsite. There is no deal activity, portfolio company issue, LP communication, compliance requirement, or external stakeholder engagement. The email contains a time-bounded ask ('confirm availability by EOW'), which qualifies as a deadline. However, the content is purely operational scheduling with no material business impact if delayed by a day or two. Priority is Low because this is routine admin with no deal or portfolio risk. No portco problem is present.",
+        "category": "Internal",
+        "priority": "Low",
+        "summary": "Team offsite scheduled for June 12-13 in the Hamptons; confirmation of availability requested by end of week.",
+        "has_deadline": true,
+        "portco_problem_flagged": false
+      },
+      "actions": {
+        "rationale": "The email contains a deadline trigger: 'confirm availability by EOW' (end of week). Received on Tuesday, May 19, 2026, 'EOW' resolves to Friday, May 22, 2026. Priority is Low, so reply_draft does not fire. Category is Internal and portco_problem_flagged is false, so next_steps does not fire. Only deadline is populated.",
+        "reply_draft": null,
+        "deadline": {
+          "deadline_text": "by EOW",
+          "deadline_date": "2026-05-22",
+          "deadline_weekday": "Friday",
+          "action_required": "Confirm availability for the June 12-13 offsite in the Hamptons"
+        },
+        "next_steps": null,
+        "violations": []
+      },
+      "status": "ok",
+      "error": null
+    },
+    {
+      "id": 6,
+      "from": "angela.ross@venturebridge.com",
+      "subject": "New deal \u2014 B2B SaaS, $8M ARR, logistics vertical",
+      "body": "Wanted to get this in front of you before we go broad. Logistics SaaS company, $8M ARR, growing 35% YoY, founder looking for a growth equity partner. Happy to send the deck if there's interest.",
+      "received_at": "2026-05-19T09:00:00Z",
+      "classification": {
+        "rationale": "This is a new investment opportunity being pitched by an external party (VentureBridge). The email introduces a potential deal target with financial metrics and growth profile, and offers to share materials (deck). This is classic Deal Flow. Priority is Medium because while it's an active opportunity, there's no indication of time pressure, competing bidders, or an imminent deadline\u2014it's an initial soft pitch. No deadline is stated. No portco problem applies since this is not a portfolio company update.",
+        "category": "Deal Flow",
+        "priority": "Medium",
+        "summary": "VentureBridge pitching B2B SaaS logistics company, $8M ARR, 35% YoY growth, seeking growth equity partner; deck available on request.",
+        "has_deadline": false,
+        "portco_problem_flagged": false
+      },
+      "actions": {
+        "rationale": null,
+        "reply_draft": null,
+        "deadline": null,
+        "next_steps": null,
+        "violations": []
+      },
+      "status": "ok",
+      "error": null
+    },
+    {
+      "id": 7,
+      "from": "tom.nguyen@alphaportfolio.com",
+      "subject": "Leadership transition at RetailTech Co",
+      "body": "Wanted to flag that our CEO submitted her resignation this morning effective in 30 days. The board is meeting Friday to discuss interim options. Will keep you posted.",
+      "received_at": "2026-05-19T09:00:00Z",
+      "classification": {
+        "rationale": "This is a Portfolio Update from an internal team member about RetailTech Co, a portfolio company. The email flags a material operational problem: CEO resignation with a 30-day notice period. This is a leadership departure, which qualifies as a portco problem. Priority is High because leadership transitions at portfolio companies require immediate board-level attention and can materially impact company performance and valuation. There is a concrete deadline (board meeting Friday, May 23), making has_deadline true. The portco_problem_flagged is true because this is a Portfolio Update category email that explicitly signals a leadership crisis.",
+        "category": "Portfolio Update",
+        "priority": "High",
+        "summary": "CEO of RetailTech Co resigned effective in 30 days; board meeting Friday to discuss interim leadership options.",
+        "has_deadline": true,
+        "portco_problem_flagged": true
+      },
+      "actions": {
+        "rationale": "All three triggers fired. reply_draft: Priority is High, so I draft a reply from Alex to Tom. I reference the CEO resignation, the 30-day window, and the Friday board meeting. I keep it action-forward and conversational (internal teammate tone). I use a placeholder for any specific commitment Alex may want to make. deadline: The email references 'Friday' as the board meeting date. Received at is Tuesday 2026-05-19, so Friday is 2026-05-22. deadline_text is 'Friday', deadline_date is 2026-05-22, deadline_weekday is Friday. action_required: Prepare for and engage with the board discussion on interim CEO options. next_steps: Category is Portfolio Update and portco_problem_flagged is true. I generate 2-3 concrete steps referencing the CEO resignation, 30-day window, and Friday board meeting.",
+        "reply_draft": "Tom, thanks for the quick heads-up \u2014 a CEO resignation is obviously a significant development and I want to make sure we're aligned going into Friday's board meeting. Can you send me any materials the board will be reviewing ahead of the session so I can come prepared on interim options? I'd also like to connect with you before Friday to discuss our preferred candidates or internal names worth considering \u2014 [insert preferred time to connect]. Let's make sure we're moving fast given the 30-day clock.  \n\nAlex",
+        "deadline": {
+          "deadline_text": "Friday",
+          "deadline_date": "2026-05-22",
+          "deadline_weekday": "Friday",
+          "action_required": "Prepare for and participate in the board meeting to discuss interim CEO options for RetailTech Co"
+        },
+        "next_steps": [
+          "Request the board meeting materials from Tom before Friday so you can review interim leadership options the board will be considering and arrive with a clear position.",
+          "Identify and align internally on preferred interim CEO candidates or criteria before the Friday board meeting, given the 30-day resignation window creates urgency around succession.",
+          "Assess whether the 30-day transition timeline is sufficient for RetailTech Co's current operational needs and flag any near-term risks (e.g., open fundraising, key customer relationships) that the outgoing CEO is managing."
+        ],
+        "violations": []
+      },
+      "status": "ok",
+      "error": null
+    },
+    {
+      "id": 8,
+      "from": "compliance@regulatorywatch.com",
+      "subject": "New SEC disclosure requirements \u2014 action required by June 30",
+      "body": "A reminder that new SEC rules affecting private fund advisers take effect June 30th. Your compliance team should review the updated Form PF requirements. Please confirm receipt.",
+      "received_at": "2026-05-19T09:00:00Z",
+      "classification": {
+        "rationale": "This is a regulatory compliance notification with a specific deadline (June 30th, which is 42 days from the received date of May 19th). The email is from a regulatory watch service and concerns SEC disclosure requirements for private fund advisers\u2014a direct compliance obligation. The deadline exceeds 30 days, so priority is Medium rather than High, but the regulatory nature and explicit action requirement ('action required', 'confirm receipt') warrant Medium over Low. has_deadline is true because June 30th is explicitly stated. portco_problem_flagged is false because this is not a Portfolio Update category.",
+        "category": "Compliance",
+        "priority": "Medium",
+        "summary": "New SEC Form PF disclosure requirements take effect June 30th; compliance team review and receipt confirmation required.",
+        "has_deadline": true,
+        "portco_problem_flagged": false
+      },
+      "actions": {
+        "rationale": "The email contains an explicit deadline: 'by June 30'. The received_at timestamp is 2026-05-19 (Tuesday). June 30, 2026 is a Tuesday, 42 days later. The deadline_text is extracted verbatim from the subject line. The action_required is to review Form PF requirements and confirm receipt, as stated in the email body. Since only the deadline trigger fired, reply_draft and next_steps are null.",
+        "reply_draft": null,
+        "deadline": {
+          "deadline_text": "by June 30",
+          "deadline_date": "2026-06-30",
+          "deadline_weekday": "Tuesday",
+          "action_required": "Review updated Form PF requirements and confirm receipt to compliance"
+        },
+        "next_steps": null,
+        "violations": []
+      },
+      "status": "ok",
+      "error": null
+    },
+    {
+      "id": 9,
+      "from": "lisa.park@mountainviewlp.com",
+      "subject": "Quarterly performance review request",
+      "body": "Hi, we're preparing our Q1 LP report and wanted to request updated performance metrics across your current fund. Specifically IRR, MOIC, and DPI by portfolio company if available. Deadline is May 20th.",
+      "received_at": "2026-05-19T09:00:00Z",
+      "classification": {
+        "rationale": "This is an LP Communication email. Lisa Park is requesting performance metrics from a Limited Partner perspective for the Q1 LP report. The email explicitly states a deadline of May 20th (tomorrow from the received date of May 19th), making this time-sensitive. The request is routine reporting but with an imminent deadline, warranting Medium-High priority. There is no portco problem indicated\u2014this is standard LP reporting. The deadline is concrete (May 20th), so has_deadline is true.",
+        "category": "LP Communication",
+        "priority": "High",
+        "summary": "Mountain View LP requests Q1 performance metrics (IRR, MOIC, DPI by portfolio company) for LP report with May 20th deadline.",
+        "has_deadline": true,
+        "portco_problem_flagged": false
+      },
+      "actions": {
+        "rationale": "Two triggers fired: reply_draft (priority is High) and deadline (has_deadline is true). For reply_draft: I'll write a formal reply to Lisa (LP/banker tone), referencing the specific metrics she requested (IRR, MOIC, DPI by portfolio company) and the May 20th deadline. I'll use a placeholder for the specific delivery time since Alex hasn't confirmed it. For deadline: deadline_text is 'May 20th', which resolves to 2026-05-20 (Wednesday). deadline_weekday is Wednesday. action_required is to pull and send IRR, MOIC, and DPI by portfolio company to Mountain View LP. next_steps is null since portco_problem_flagged is false.",
+        "reply_draft": "Hi Lisa,\n\nThank you for reaching out \u2014 we're happy to support Mountain View LP's Q1 report preparation. We'll compile the IRR, MOIC, and DPI figures by portfolio company and have them to you [insert delivery time] ahead of your May 20th deadline. If there are any specific fund vintages or portfolio companies you'd like us to prioritize, please let us know and we'll flag those first.\n\nBest regards,\nAlex Carter",
+        "deadline": {
+          "deadline_text": "May 20th",
+          "deadline_date": "2026-05-20",
+          "deadline_weekday": "Wednesday",
+          "action_required": "Compile and send IRR, MOIC, and DPI by portfolio company to Mountain View LP for their Q1 LP report"
+        },
+        "next_steps": null,
+        "violations": []
+      },
+      "status": "ok",
+      "error": null
+    },
+    {
+      "id": 10,
+      "from": "noreply@docusign.com",
+      "subject": "Document ready for signature \u2014 NDA with Apex Growth Partners",
+      "body": "Alex Carter, a document has been sent to you for electronic signature. Please review and sign at your earliest convenience.",
+      "received_at": "2026-05-19T09:00:00Z",
+      "classification": {
+        "rationale": "This is a DocuSign notification for an NDA signature request with Apex Growth Partners. NDAs are foundational deal documents that precede investment diligence and term sheets. The tiebreaker rule clarifies that the underlying transaction (a potential new investment opportunity) governs the category, not the delivery system. This is Deal Flow. Priority is High because active deal progression requires prompt execution of legal documents\u2014delay in signing could slow momentum. No explicit deadline is stated in the email body (\"earliest convenience\" is not a concrete date), so has_deadline is false. No portfolio company problem is indicated. The summary captures the key fact: NDA signature needed for a prospective investment partner.",
+        "category": "Deal Flow",
+        "priority": "High",
+        "summary": "DocuSign notification: NDA with Apex Growth Partners awaiting signature from Alex Carter.",
+        "has_deadline": false,
+        "portco_problem_flagged": false
+      },
+      "actions": {
+        "rationale": "Only reply_draft fired (priority is High). I need to draft a reply on behalf of Alex Carter acknowledging the NDA signature request from Apex Growth Partners. However, this is a DocuSign noreply notification \u2014 there is no named individual sender to address by first name. I'll keep the draft practical and action-forward, noting that Alex will review and sign the document, and suggesting a next step with Apex Growth Partners. Since no specific contact name, timeline, or meeting details are provided in the email, I'll use a placeholder for the turnaround commitment. deadline and next_steps are null since those triggers did not fire.",
+        "reply_draft": "Hi [Apex Growth Partners contact name],\n\nI've received the DocuSign request for the NDA and will review and return the signed document [insert turnaround \u2014 e.g., by EOD today]. Once executed, I'd welcome a brief introductory call to discuss the opportunity in more detail \u2014 please feel free to share your availability. Looking forward to moving things forward.\n\nBest,\nAlex Carter",
+        "deadline": null,
+        "next_steps": null,
+        "violations": []
+      },
+      "status": "ok",
+      "error": null
+    },
+    {
+      "id": 11,
+      "from": "kevin.shaw@apexgrowth.com",
+      "subject": "Follow-up \u2014 NDA and next steps",
+      "body": "Just wanted to make sure you received the NDA from DocuSign. Once that's executed we can share the CIM. We have two other parties engaged so want to keep things moving.",
+      "received_at": "2026-05-19T09:00:00Z",
+      "classification": {
+        "rationale": "This is a follow-up on an investment opportunity in active motion. The sender is referencing an NDA (non-disclosure agreement) and CIM (confidential information memorandum), which are standard deal flow documents. The mention of 'two other parties engaged' and 'want to keep things moving' signals competitive tension and an active transaction. This is clearly Deal Flow, not a portfolio update or other category. Priority is High because there's active deal momentum with competitive pressure and a clear next step (NDA execution) that gates access to diligence materials. No explicit deadline is stated (no date like 'May 25' or 'by EOW'), so has_deadline is false. No portco problem is indicated.",
+        "category": "Deal Flow",
+        "priority": "High",
+        "summary": "Follow-up on NDA execution for a new investment opportunity; CIM to be shared once NDA is signed. Two other parties are engaged in the process.",
+        "has_deadline": false,
+        "portco_problem_flagged": false
+      },
+      "actions": {
+        "rationale": "Only reply_draft fired (priority is High). I need to write a draft reply from Alex Carter to Kevin Shaw, referencing the NDA, CIM, and competitive context. Deadline and next_steps are null since has_deadline is false and category is not Portfolio Update with a portco problem.",
+        "reply_draft": "Hi Kevin,\n\nThanks for the follow-up \u2014 I did receive the DocuSign and will get the NDA executed [insert turnaround]. Appreciate you flagging the other parties; we want to stay in the process and are keen to review the CIM as soon as we have the NDA back to you. I'll prioritize this on our end.\n\nBest,\nAlex",
+        "deadline": null,
+        "next_steps": null,
+        "violations": []
+      },
+      "status": "ok",
+      "error": null
+    },
+    {
+      "id": 12,
+      "from": "priya.mehta@internalteam.com",
+      "subject": "Updated financial model \u2014 please review before Thursday",
+      "body": "Hi, I've attached the revised model with the updated revenue assumptions we discussed. Can you take a look before the partner meeting Thursday? A few of the scenarios still need your input on the exit multiple range.",
+      "received_at": "2026-05-19T09:00:00Z",
+      "classification": {
+        "rationale": "This is an internal email from a team member requesting a model review before a near-term meeting (Thursday, 2 days away). The sender is asking for feedback on financial scenarios before a partner meeting, which is a routine internal task with a concrete deadline. This is clearly Internal category. Priority is Medium because it's a scheduled internal review with a near-term deadline but not a deal in active motion or crisis. The email has a deadline ('before Thursday'), so has_deadline is true. There is no portfolio company mentioned, so portco_problem_flagged is false.",
+        "category": "Internal",
+        "priority": "Medium",
+        "summary": "Priya requests review of updated financial model with revised revenue assumptions and exit multiple scenarios before Thursday partner meeting.",
+        "has_deadline": true,
+        "portco_problem_flagged": false
+      },
+      "actions": {
+        "rationale": "Only the deadline trigger fired. Priority is Medium (not High), so reply_draft is null. Category is Internal and portco_problem_flagged is false, so next_steps is null. The email contains a clear deadline: 'before Thursday'. Received at is Tuesday, May 19, 2026. 'Before Thursday' resolves to Thursday, May 21, 2026 (2 days out). The action required is to review the financial model and provide input on exit multiple scenarios.",
+        "reply_draft": null,
+        "deadline": {
+          "deadline_text": "before Thursday",
+          "deadline_date": "2026-05-21",
+          "deadline_weekday": "Thursday",
+          "action_required": "Review updated financial model and provide input on exit multiple range scenarios"
+        },
+        "next_steps": null,
+        "violations": []
+      },
+      "status": "ok",
+      "error": null
+    },
+    {
+      "id": 13,
+      "from": "robert.klein@creditsuisse.com",
+      "subject": "Debt financing options for portfolio company acquisition",
+      "body": "Following our call, I've put together three financing structures for the proposed add-on acquisition. Happy to walk through the pros and cons on a call this week. Let me know your availability.",
+      "received_at": "2026-05-19T09:00:00Z",
+      "classification": {
+        "rationale": "This is a bank (Credit Suisse) offering debt financing structures for a portfolio company acquisition. Per the tiebreaker rule, debt financing for a portfolio company *acquisition* is Deal Flow, not Portfolio Update, because it concerns a new transaction. The email requests a call 'this week' which is a time-bounded ask. Priority is High because active deal financing is in motion and delay could impact transaction timing. No portco problem is flagged\u2014this is a routine financing proposal. No deadline date is explicitly stated (only 'this week'), so has_deadline is false per the strict definition requiring a concrete date or relative time-bounded phrase; 'this week' counts as time-bounded but the instruction specifies 'by EOW', 'before Thursday', 'this week' as examples that DO count\u2014'this week' is included, so has_deadline is true.",
+        "category": "Deal Flow",
+        "priority": "High",
+        "summary": "Credit Suisse proposes three debt financing structures for a portfolio company add-on acquisition; requests call this week to review options.",
+        "has_deadline": true,
+        "portco_problem_flagged": false
+      },
+      "actions": {
+        "rationale": "reply_draft fired (High priority): Draft a reply from Alex Carter to Robert Klein, referencing the three financing structures and proposing a call this week. Tone should be formal (banker). I'll use a placeholder for the specific time since no times were proposed in the email. deadline fired (has_deadline true): The email says 'this week' \u2014 per pinned conventions, 'this week' resolves to the upcoming Friday. Received Tuesday 2026-05-19, so Friday is 2026-05-22. next_steps is null (category is Deal Flow, not Portfolio Update with portco_problem_flagged).",
+        "reply_draft": "Hi Robert,\n\nThank you for pulling together the three financing structures \u2014 I appreciate the quick turnaround following our call. I'd like to schedule time this week to walk through the options in detail; I'm available [insert your available times this week] if any of those work on your end. Please also send over the materials ahead of the call so I can review the structures beforehand.\n\nLooking forward to it.\n\nBest,\nAlex",
+        "deadline": {
+          "deadline_text": "this week",
+          "deadline_date": "2026-05-22",
+          "deadline_weekday": "Friday",
+          "action_required": "Schedule a call with Robert Klein to review the three debt financing structures for the add-on acquisition"
+        },
+        "next_steps": null,
+        "violations": []
+      },
+      "status": "ok",
+      "error": null
+    },
+    {
+      "id": 14,
+      "from": "anna.steele@harborcapital.com",
+      "subject": "Re: Co-investment opportunity \u2014 HealthTech Platform",
+      "body": "We've reviewed the materials and our team is supportive of co-investing up to $5M alongside your fund. Can we get on a call to align on timing and documentation before the close?",
+      "received_at": "2026-05-19T09:00:00Z",
+      "classification": {
+        "rationale": "This is a co-investment offer from another fund (Harbor Capital) expressing interest in participating in a deal. The email references reviewing materials, a capital commitment ($5M), and next steps (call on timing and documentation). This is clearly deal flow \u2014 a new investment opportunity in motion. Priority is High because an active co-investor is ready to move forward and delay in alignment could jeopardize the co-investment or close timing. No explicit deadline is stated (no date, 'EOW', 'by X date'), so has_deadline is false. This is not a portfolio update, so portco_problem_flagged is false.",
+        "category": "Deal Flow",
+        "priority": "High",
+        "summary": "Harbor Capital is ready to co-invest $5M in the HealthTech Platform deal and requests a call to align on timing and documentation before close.",
+        "has_deadline": false,
+        "portco_problem_flagged": false
+      },
+      "actions": {
+        "rationale": "Only reply_draft fired (priority is High). deadline and next_steps are null since has_deadline is false and portco_problem_flagged is false. I'll write a reply to Anna referencing the $5M commitment, the HealthTech Platform deal, and propose aligning on a call \u2014 using a placeholder for the specific time since no times were proposed in the email.",
+        "reply_draft": "Hi Anna,\n\nGreat to hear \u2014 we're glad Harbor Capital is supportive and a $5M co-investment would be a strong addition to the round. I'd like to get on a call this week to walk through timing and documentation requirements before the close. Does [insert proposed time/date] work for your team?\n\nI'll have our counsel loop in on the doc side so we can move efficiently once we're aligned.\n\nBest,\nAlex",
+        "deadline": null,
+        "next_steps": null,
+        "violations": []
+      },
+      "status": "ok",
+      "error": null
+    },
+    {
+      "id": 15,
+      "from": "events@peconference.com",
+      "subject": "Speaker invitation \u2014 Private Equity Innovation Summit 2026",
+      "body": "We'd like to invite you to speak on a panel at this year's PE Innovation Summit in Chicago on September 18th. The panel topic is AI adoption in middle market PE. Please let us know by June 1st if you're available.",
+      "received_at": "2026-05-19T09:00:00Z",
+      "classification": {
+        "rationale": "This is an invitation to speak at a conference. The sender is an external events organization, not a portfolio company, LP, or deal-related party. The email is informational/marketing in nature with no deal flow, portfolio operational content, LP capital matters, or compliance requirements. The June 1st deadline is noted, but conference speaking is discretionary and non-material to firm operations. Priority is Low because this is a voluntary engagement with no business-critical impact.",
+        "category": "Other",
+        "priority": "Low",
+        "summary": "Conference organizer inviting a speaker to the PE Innovation Summit panel on AI adoption in middle market PE; response requested by June 1st.",
+        "has_deadline": true,
+        "portco_problem_flagged": false
+      },
+      "actions": {
+        "rationale": "The email contains a clear deadline: 'by June 1st'. The received_at timestamp is 2026-05-19 (Tuesday). June 1st, 2026 is a Sunday, but in business context this resolves to the next business day, Monday, June 1st, 2026 (or interpreted as the Friday before if 'by June 1st' means the business deadline). However, June 1st itself is explicitly stated as a concrete date in the current year. Deadline_date is 2026-06-01 (Monday). Deadline_weekday is Monday. Action_required is to confirm availability for the speaking panel. No reply_draft fires (priority is Low, not High). No next_steps fire (category is 'Other', not 'Portfolio Update'). No portco_problem_flagged, so next_steps does not apply.",
+        "reply_draft": null,
+        "deadline": {
+          "deadline_text": "by June 1st",
+          "deadline_date": "2026-06-01",
+          "deadline_weekday": "Monday",
+          "action_required": "Confirm availability to speak on the AI adoption panel at the PE Innovation Summit"
+        },
+        "next_steps": null,
+        "violations": []
+      },
+      "status": "ok",
+      "error": null
+    },
+    {
+      "id": 16,
+      "from": "michael.ford@portfolioco.com",
+      "subject": "Urgent \u2014 customer churn spike in April",
+      "body": "Wanted to flag this before the board call. We saw an unexpected 12% churn spike in April concentrated in our SMB segment. We believe it's tied to a pricing change we rolled out in March. Working on a response plan now.",
+      "received_at": "2026-05-19T09:00:00Z",
+      "classification": {
+        "rationale": "This is a Portfolio Update from a portfolio company founder/executive flagging an operational problem (customer churn spike of 12% in the SMB segment). The email explicitly indicates a problem requiring management attention and a response plan, which qualifies as a portco_problem_flagged signal. The subject line says 'Urgent' and mentions timing relative to a board call, suggesting time-sensitivity, but there is no explicit deadline stated (no specific date like 'May 25th' or relative time like 'by EOW'). Given the operational crisis nature and the mention of 'before the board call,' this warrants High priority \u2014 a 12% churn spike is material and requires immediate partner awareness. The category is Portfolio Update because it concerns an existing portfolio company's operations.",
+        "category": "Portfolio Update",
+        "priority": "High",
+        "summary": "Portfolio company experienced unexpected 12% customer churn spike in April concentrated in SMB segment, attributed to March pricing change; management developing response plan ahead of board call.",
+        "has_deadline": false,
+        "portco_problem_flagged": true
+      },
+      "actions": {
+        "rationale": "reply_draft fires because priority is High \u2014 I'll draft a reply from Alex to Michael referencing the 12% SMB churn spike and the March pricing change, proposing a concrete next step before the board call. next_steps fires because category is Portfolio Update and portco_problem_flagged is true \u2014 I'll write 2-3 concrete partner actions tied to specifics in the email. deadline is null because has_deadline is false. No deadline was stated in the email.",
+        "reply_draft": "Michael, thanks for flagging this ahead of the board call \u2014 a 12% churn spike concentrated in SMB is material and we want to move quickly. Can you share the underlying cohort data breaking down churn by customer tenure, ARR band, and acquisition channel so we can isolate how much of this is directly attributable to the March pricing change versus other factors? I'd also like to get on a call [insert proposed time] to walk through the response plan before it's finalized. Let's make sure we're aligned on messaging and remediation steps before the board sees this. \u2014 Alex",
+        "deadline": null,
+        "next_steps": [
+          "Request the SMB churn cohort breakdown from Michael segmented by customer tenure, ARR band, and acquisition channel to determine how much of the 12% spike is directly caused by the March pricing change versus other factors.",
+          "Review the response plan management is developing before it's finalized, and pressure-test whether it includes a potential pricing rollback or tiered pricing option for the SMB segment.",
+          "Coordinate with Michael on board call messaging to ensure the churn spike, its root cause attribution to the March pricing change, and the remediation plan are presented with sufficient data to preempt board concern."
+        ],
+        "violations": []
+      },
+      "status": "ok",
+      "error": null
+    },
+    {
+      "id": 17,
+      "from": "jennifer.wu@internalteam.com",
+      "subject": "Expense report approvals pending",
+      "body": "Hi, there are four expense reports sitting in the queue waiting for your approval. Oldest one is from April 22nd. Can you take a look when you get a chance?",
+      "received_at": "2026-05-19T09:00:00Z",
+      "classification": {
+        "rationale": "This is an internal administrative email from a team member requesting approval of pending expense reports. There is no deal activity, LP communication, compliance deadline, portfolio company update, or external stakeholder involvement. The email is routine operational housekeeping with no time-critical urgency\u2014expense report approvals are standard back-office work. While the oldest report is from April 22nd (nearly 4 weeks old), the sender uses soft language ('when you get a chance') and there is no stated deadline or consequence for delay. This is clearly Low priority Internal category.",
+        "category": "Internal",
+        "priority": "Low",
+        "summary": "Four expense reports pending approval; oldest from April 22nd.",
+        "has_deadline": false,
+        "portco_problem_flagged": false
+      },
+      "actions": {
+        "rationale": null,
+        "reply_draft": null,
+        "deadline": null,
+        "next_steps": null,
+        "violations": []
+      },
+      "status": "ok",
+      "error": null
+    },
+    {
+      "id": 18,
+      "from": "dan.okafor@lpfund.com",
+      "subject": "Fund III commitment \u2014 increasing allocation",
+      "body": "After our recent conversation I've been authorized to increase our Fund III commitment from $25M to $40M. Please send updated subscription documents when ready.",
+      "received_at": "2026-05-19T09:00:00Z",
+      "classification": {
+        "rationale": "This is a Limited Partner (LP) communication regarding a capital commitment increase for Fund III. Dan Okafor is from an LP fund (lpfund.com) and is formally committing additional capital ($25M increase to $40M total). This is a core LP Communication activity. Priority is High because it involves active capital commitment and requires prompt execution of subscription documents\u2014delay could jeopardize the LP's increased allocation. No explicit deadline is stated in the email body (no date, 'by EOW', 'this week', etc.), so has_deadline is false. This is not a portfolio company update, so portco_problem_flagged is false.",
+        "category": "LP Communication",
+        "priority": "High",
+        "summary": "LP (lpfund.com) increasing Fund III commitment from $25M to $40M; requests updated subscription documents.",
+        "has_deadline": false,
+        "portco_problem_flagged": false
+      },
+      "actions": {
+        "rationale": "Only reply_draft fired (priority is High). deadline and next_steps are null since has_deadline is false and portco_problem_flagged is false. I'll write a formal, action-forward reply to Dan referencing the specific commitment increase from $25M to $40M and committing to send updated subscription documents, using a placeholder for the specific turnaround time since Alex cannot confirm that without checking internally.",
+        "reply_draft": "Dear Dan,\n\nThank you for the update \u2014 we're pleased to hear you've been authorized to increase your Fund III commitment from $25M to $40M. I'll have our team prepare the updated subscription documents reflecting the revised allocation and send them over to you [insert turnaround timeline].\n\nPlease let me know if there are any specific instructions or contacts on your end we should coordinate with for the updated documentation. We look forward to finalizing this.\n\nBest regards,\nAlex Carter",
+        "deadline": null,
+        "next_steps": null,
+        "violations": []
+      },
+      "status": "ok",
+      "error": null
+    },
+    {
+      "id": 19,
+      "from": "press@techcrunch.com",
+      "subject": "Comment request \u2014 story on AI adoption in private equity",
+      "body": "Hi Alex, I'm a reporter at TechCrunch working on a piece about how PE firms are adopting AI internally. Would love a quick comment or a 15-minute call before Friday. No obligation.",
+      "received_at": "2026-05-19T09:00:00Z",
+      "classification": {
+        "rationale": "This is a media inquiry from TechCrunch requesting a comment on a story about AI adoption in PE. The sender is a journalist, not a portfolio company or LP. The request has a soft deadline (\"before Friday\") but is explicitly framed as \"no obligation\" and is a comment request, not a deal-critical or compliance matter. This is clearly Press category. Priority is Low because it's optional commentary with no material business impact if declined or delayed. There is a deadline (Friday), so has_deadline is true. No portfolio company problem is indicated.",
+        "category": "Press",
+        "priority": "Low",
+        "summary": "TechCrunch reporter requests optional comment on AI adoption in PE firms by Friday for a story.",
+        "has_deadline": true,
+        "portco_problem_flagged": false
+      },
+      "actions": {
+        "rationale": "The email is classified as Press with Low priority and has_deadline=true. Only the deadline trigger fired. The sender requests a comment \"before Friday\" with received_at on Tuesday, May 19, 2026. \"Before Friday\" resolves to Friday, May 23, 2026 (the upcoming Friday in the same week). The action required is to provide a comment or confirm availability for a brief call. reply_draft does not fire (priority is Low, not High). next_steps does not fire (category is Press, not Portfolio Update). No reply_draft, next_steps, or other fields are generated.",
+        "reply_draft": null,
+        "deadline": {
+          "deadline_text": "before Friday",
+          "deadline_date": null,
+          "deadline_weekday": null,
+          "action_required": "Provide comment on AI adoption in PE or confirm availability for 15-minute call"
+        },
+        "next_steps": null,
+        "violations": []
+      },
+      "status": "ok",
+      "error": null
+    },
+    {
+      "id": 20,
+      "from": "alex.turner@portfolioco.com",
+      "subject": "Board meeting prep \u2014 deck and materials",
+      "body": "Sending over the board deck for next week's meeting. Still waiting on the legal update from outside counsel. Will send that separately once it comes in. Let me know if anything looks off.",
+      "received_at": "2026-05-19T09:00:00Z",
+      "classification": {
+        "rationale": "This is a routine board preparation email from a portfolio company executive sharing materials for an upcoming board meeting. The email is informational with a minor action item (review the deck and flag issues), but no crisis, operational problem, or time-critical deadline is indicated. The mention of waiting on legal counsel is standard governance process, not a flagged problem. Category is Portfolio Update (operational/governance update from a portco). Priority is Medium because there is a near-term board meeting (next week) requiring review, but no urgency signal or problem. No explicit deadline date is stated in the email body (\"next week\" is relative but not a specific date like \"May 27\"), so has_deadline is false. No portco problem is flagged\u2014this is routine board prep.",
+        "category": "Portfolio Update",
+        "priority": "Medium",
+        "summary": "Portfolio company sending board deck for next week's meeting; legal update from outside counsel to follow separately.",
+        "has_deadline": false,
+        "portco_problem_flagged": false
+      },
+      "actions": {
+        "rationale": null,
+        "reply_draft": null,
+        "deadline": null,
+        "next_steps": null,
+        "violations": []
+      },
+      "status": "ok",
+      "error": null
+    }
+  ],
+  "deadlines_log": [
+    {
+      "id": 1,
+      "from": "mark.chen@horizoncapital.com",
+      "subject": "Re: Series B interest \u2014 CloudOps AI",
+      "received_at": "2026-05-19T09:00:00Z",
+      "deadline": {
+        "deadline_text": "this week",
+        "deadline_date": "2026-05-22",
+        "deadline_weekday": "Friday",
+        "action_required": "Schedule a call with Horizon Capital to discuss CloudOps AI term sheet timing"
+      }
+    },
+    {
+      "id": 5,
+      "from": "david.park@internalteam.com",
+      "subject": "Team offsite \u2014 dates and logistics",
+      "received_at": "2026-05-19T09:00:00Z",
+      "deadline": {
+        "deadline_text": "by EOW",
+        "deadline_date": "2026-05-22",
+        "deadline_weekday": "Friday",
+        "action_required": "Confirm availability for the June 12-13 offsite in the Hamptons"
+      }
+    },
+    {
+      "id": 7,
+      "from": "tom.nguyen@alphaportfolio.com",
+      "subject": "Leadership transition at RetailTech Co",
+      "received_at": "2026-05-19T09:00:00Z",
+      "deadline": {
+        "deadline_text": "Friday",
+        "deadline_date": "2026-05-22",
+        "deadline_weekday": "Friday",
+        "action_required": "Prepare for and participate in the board meeting to discuss interim CEO options for RetailTech Co"
+      }
+    },
+    {
+      "id": 8,
+      "from": "compliance@regulatorywatch.com",
+      "subject": "New SEC disclosure requirements \u2014 action required by June 30",
+      "received_at": "2026-05-19T09:00:00Z",
+      "deadline": {
+        "deadline_text": "by June 30",
+        "deadline_date": "2026-06-30",
+        "deadline_weekday": "Tuesday",
+        "action_required": "Review updated Form PF requirements and confirm receipt to compliance"
+      }
+    },
+    {
+      "id": 9,
+      "from": "lisa.park@mountainviewlp.com",
+      "subject": "Quarterly performance review request",
+      "received_at": "2026-05-19T09:00:00Z",
+      "deadline": {
+        "deadline_text": "May 20th",
+        "deadline_date": "2026-05-20",
+        "deadline_weekday": "Wednesday",
+        "action_required": "Compile and send IRR, MOIC, and DPI by portfolio company to Mountain View LP for their Q1 LP report"
+      }
+    },
+    {
+      "id": 12,
+      "from": "priya.mehta@internalteam.com",
+      "subject": "Updated financial model \u2014 please review before Thursday",
+      "received_at": "2026-05-19T09:00:00Z",
+      "deadline": {
+        "deadline_text": "before Thursday",
+        "deadline_date": "2026-05-21",
+        "deadline_weekday": "Thursday",
+        "action_required": "Review updated financial model and provide input on exit multiple range scenarios"
+      }
+    },
+    {
+      "id": 13,
+      "from": "robert.klein@creditsuisse.com",
+      "subject": "Debt financing options for portfolio company acquisition",
+      "received_at": "2026-05-19T09:00:00Z",
+      "deadline": {
+        "deadline_text": "this week",
+        "deadline_date": "2026-05-22",
+        "deadline_weekday": "Friday",
+        "action_required": "Schedule a call with Robert Klein to review the three debt financing structures for the add-on acquisition"
+      }
+    },
+    {
+      "id": 15,
+      "from": "events@peconference.com",
+      "subject": "Speaker invitation \u2014 Private Equity Innovation Summit 2026",
+      "received_at": "2026-05-19T09:00:00Z",
+      "deadline": {
+        "deadline_text": "by June 1st",
+        "deadline_date": "2026-06-01",
+        "deadline_weekday": "Monday",
+        "action_required": "Confirm availability to speak on the AI adoption panel at the PE Innovation Summit"
+      }
+    },
+    {
+      "id": 19,
+      "from": "press@techcrunch.com",
+      "subject": "Comment request \u2014 story on AI adoption in private equity",
+      "received_at": "2026-05-19T09:00:00Z",
+      "deadline": {
+        "deadline_text": "before Friday",
+        "deadline_date": null,
+        "deadline_weekday": null,
+        "action_required": "Provide comment on AI adoption in PE or confirm availability for 15-minute call"
+      }
+    }
+  ],
+  "reply_drafts": [
+    {
+      "id": 1,
+      "from": "mark.chen@horizoncapital.com",
+      "subject": "Re: Series B interest \u2014 CloudOps AI",
+      "received_at": "2026-05-19T09:00:00Z",
+      "reply_draft": "Hi Mark, great to hear that Horizon has completed diligence and that your partners are aligned \u2014 that's an encouraging signal for CloudOps AI. I'd be glad to connect this week to walk through term sheet timing; I'm available [insert available times, e.g., Wednesday or Thursday afternoon ET] \u2014 does any of that work for you? Please send over a calendar invite and we can make sure the right people are on the call. Looking forward to it.\n\nBest,\nAlex"
+    },
+    {
+      "id": 3,
+      "from": "james.thornton@lpfund.com",
+      "subject": "Capital Call Notice Question",
+      "received_at": "2026-05-19T09:00:00Z",
+      "reply_draft": "Hi James,\n\nThank you for reaching out regarding the capital call notice dated April 28th \u2014 we're glad to hear you're moving forward with processing. The wire instructions are as follows: [insert wire instructions], and the funding deadline is [insert deadline date]. Please don't hesitate to reach out if you have any questions or need additional documentation to complete the transfer.\n\nBest regards,\nAlex Carter"
+    },
+    {
+      "id": 7,
+      "from": "tom.nguyen@alphaportfolio.com",
+      "subject": "Leadership transition at RetailTech Co",
+      "received_at": "2026-05-19T09:00:00Z",
+      "reply_draft": "Tom, thanks for the quick heads-up \u2014 a CEO resignation is obviously a significant development and I want to make sure we're aligned going into Friday's board meeting. Can you send me any materials the board will be reviewing ahead of the session so I can come prepared on interim options? I'd also like to connect with you before Friday to discuss our preferred candidates or internal names worth considering \u2014 [insert preferred time to connect]. Let's make sure we're moving fast given the 30-day clock.  \n\nAlex"
+    },
+    {
+      "id": 9,
+      "from": "lisa.park@mountainviewlp.com",
+      "subject": "Quarterly performance review request",
+      "received_at": "2026-05-19T09:00:00Z",
+      "reply_draft": "Hi Lisa,\n\nThank you for reaching out \u2014 we're happy to support Mountain View LP's Q1 report preparation. We'll compile the IRR, MOIC, and DPI figures by portfolio company and have them to you [insert delivery time] ahead of your May 20th deadline. If there are any specific fund vintages or portfolio companies you'd like us to prioritize, please let us know and we'll flag those first.\n\nBest regards,\nAlex Carter"
+    },
+    {
+      "id": 10,
+      "from": "noreply@docusign.com",
+      "subject": "Document ready for signature \u2014 NDA with Apex Growth Partners",
+      "received_at": "2026-05-19T09:00:00Z",
+      "reply_draft": "Hi [Apex Growth Partners contact name],\n\nI've received the DocuSign request for the NDA and will review and return the signed document [insert turnaround \u2014 e.g., by EOD today]. Once executed, I'd welcome a brief introductory call to discuss the opportunity in more detail \u2014 please feel free to share your availability. Looking forward to moving things forward.\n\nBest,\nAlex Carter"
+    },
+    {
+      "id": 11,
+      "from": "kevin.shaw@apexgrowth.com",
+      "subject": "Follow-up \u2014 NDA and next steps",
+      "received_at": "2026-05-19T09:00:00Z",
+      "reply_draft": "Hi Kevin,\n\nThanks for the follow-up \u2014 I did receive the DocuSign and will get the NDA executed [insert turnaround]. Appreciate you flagging the other parties; we want to stay in the process and are keen to review the CIM as soon as we have the NDA back to you. I'll prioritize this on our end.\n\nBest,\nAlex"
+    },
+    {
+      "id": 13,
+      "from": "robert.klein@creditsuisse.com",
+      "subject": "Debt financing options for portfolio company acquisition",
+      "received_at": "2026-05-19T09:00:00Z",
+      "reply_draft": "Hi Robert,\n\nThank you for pulling together the three financing structures \u2014 I appreciate the quick turnaround following our call. I'd like to schedule time this week to walk through the options in detail; I'm available [insert your available times this week] if any of those work on your end. Please also send over the materials ahead of the call so I can review the structures beforehand.\n\nLooking forward to it.\n\nBest,\nAlex"
+    },
+    {
+      "id": 14,
+      "from": "anna.steele@harborcapital.com",
+      "subject": "Re: Co-investment opportunity \u2014 HealthTech Platform",
+      "received_at": "2026-05-19T09:00:00Z",
+      "reply_draft": "Hi Anna,\n\nGreat to hear \u2014 we're glad Harbor Capital is supportive and a $5M co-investment would be a strong addition to the round. I'd like to get on a call this week to walk through timing and documentation requirements before the close. Does [insert proposed time/date] work for your team?\n\nI'll have our counsel loop in on the doc side so we can move efficiently once we're aligned.\n\nBest,\nAlex"
+    },
+    {
+      "id": 16,
+      "from": "michael.ford@portfolioco.com",
+      "subject": "Urgent \u2014 customer churn spike in April",
+      "received_at": "2026-05-19T09:00:00Z",
+      "reply_draft": "Michael, thanks for flagging this ahead of the board call \u2014 a 12% churn spike concentrated in SMB is material and we want to move quickly. Can you share the underlying cohort data breaking down churn by customer tenure, ARR band, and acquisition channel so we can isolate how much of this is directly attributable to the March pricing change versus other factors? I'd also like to get on a call [insert proposed time] to walk through the response plan before it's finalized. Let's make sure we're aligned on messaging and remediation steps before the board sees this. \u2014 Alex"
+    },
+    {
+      "id": 18,
+      "from": "dan.okafor@lpfund.com",
+      "subject": "Fund III commitment \u2014 increasing allocation",
+      "received_at": "2026-05-19T09:00:00Z",
+      "reply_draft": "Dear Dan,\n\nThank you for the update \u2014 we're pleased to hear you've been authorized to increase your Fund III commitment from $25M to $40M. I'll have our team prepare the updated subscription documents reflecting the revised allocation and send them over to you [insert turnaround timeline].\n\nPlease let me know if there are any specific instructions or contacts on your end we should coordinate with for the updated documentation. We look forward to finalizing this.\n\nBest regards,\nAlex Carter"
+    }
+  ],
+  "next_steps_log": [
+    {
+      "id": 7,
+      "from": "tom.nguyen@alphaportfolio.com",
+      "subject": "Leadership transition at RetailTech Co",
+      "received_at": "2026-05-19T09:00:00Z",
+      "next_steps": [
+        "Request the board meeting materials from Tom before Friday so you can review interim leadership options the board will be considering and arrive with a clear position.",
+        "Identify and align internally on preferred interim CEO candidates or criteria before the Friday board meeting, given the 30-day resignation window creates urgency around succession.",
+        "Assess whether the 30-day transition timeline is sufficient for RetailTech Co's current operational needs and flag any near-term risks (e.g., open fundraising, key customer relationships) that the outgoing CEO is managing."
+      ]
+    },
+    {
+      "id": 16,
+      "from": "michael.ford@portfolioco.com",
+      "subject": "Urgent \u2014 customer churn spike in April",
+      "received_at": "2026-05-19T09:00:00Z",
+      "next_steps": [
+        "Request the SMB churn cohort breakdown from Michael segmented by customer tenure, ARR band, and acquisition channel to determine how much of the 12% spike is directly caused by the March pricing change versus other factors.",
+        "Review the response plan management is developing before it's finalized, and pressure-test whether it includes a potential pricing rollback or tiered pricing option for the SMB segment.",
+        "Coordinate with Michael on board call messaging to ensure the churn spike, its root cause attribution to the March pricing change, and the remediation plan are presented with sufficient data to preempt board concern."
+      ]
+    }
+  ]
+}

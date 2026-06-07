@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Email Triage Report</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+          max-width: 960px; margin: 2rem auto; padding: 0 1rem;
+          color: #2c3e50; line-height: 1.5; background: #f8f9fa; }
+  h1 { margin-bottom: 0.2rem; }
+  .banner { background: white; padding: 1.5rem; border-radius: 8px;
+             margin-bottom: 2rem; border-left: 4px solid #34495e; }
+  .meta { color: #7f8c8d; font-size: 0.9rem; margin-bottom: 1rem; }
+  .chips { margin-top: 0.8rem; }
+  .chip { display: inline-block; background: #ecf0f1; padding: 0.2rem 0.6rem;
+           border-radius: 12px; font-size: 0.85rem; margin: 0.2rem 0.3rem 0.2rem 0; }
+  .card { background: white; padding: 1.2rem; border-radius: 8px;
+           margin-bottom: 1rem; border-left: 4px solid #ecf0f1; }
+  .card.error { border-left-color: #c0392b; }
+  .card-header { font-size: 0.85rem; color: #7f8c8d; margin-bottom: 0.5rem; }
+  .badge { display: inline-block; padding: 0.15rem 0.5rem; border-radius: 4px;
+            color: white; font-weight: bold; font-size: 0.75rem; margin-right: 0.5rem; }
+  .error-badge { background: #c0392b; }
+  .category { display: inline-block; padding: 0.15rem 0.5rem; border-radius: 4px;
+              color: white; font-weight: bold; font-size: 0.75rem; margin-right: 0.5rem; }
+  .email-id { color: #95a5a6; margin-right: 0.6rem; }
+  .received { color: #95a5a6; font-style: italic; }
+  .from-line { font-size: 0.95rem; color: #34495e; margin-bottom: 0.2rem; }
+  .subject { font-weight: bold; font-size: 1.05rem; margin-bottom: 0.6rem; }
+  .body { background: #f8f9fa; padding: 0.7rem 0.9rem; border-left: 3px solid #d5dbdb;
+           font-size: 0.92rem; white-space: pre-wrap; margin: 0.5rem 0 0.8rem 0;
+           color: #4a5568; font-family: Georgia, "Times New Roman", serif; }
+  .summary { margin-bottom: 0.8rem; color: #2c3e50; font-weight: 500; }
+  .violations { background: #fef5e7; color: #d68910; padding: 0.4rem 0.6rem;
+                 border-radius: 4px; font-size: 0.85rem; margin-bottom: 0.6rem; }
+  .action { margin-top: 0.8rem; padding-top: 0.6rem; border-top: 1px solid #ecf0f1; }
+  .action-label { font-size: 0.8rem; color: #7f8c8d; text-transform: uppercase;
+                   letter-spacing: 0.05em; margin-bottom: 0.3rem; }
+  .action-body { color: #2c3e50; }
+  .action-body.reply { white-space: pre-wrap; background: #f8f9fa;
+                        padding: 0.7rem; border-radius: 4px; font-size: 0.95rem; }
+  .anchor { color: #95a5a6; font-size: 0.85rem; }
+  .date-iso { color: #2980b9; font-weight: 600; font-size: 0.9rem; }
+  .deadline-action { margin-top: 0.3rem; }
+  .next-steps { margin: 0.3rem 0 0 1.2rem; padding: 0; }
+  .next-steps li { margin-bottom: 0.3rem; }
+  .no-action { color: #95a5a6; font-style: italic; font-size: 0.9rem; }
+  .rationale { margin-top: 0.8rem; font-size: 0.85rem; color: #7f8c8d; }
+  .rationale summary { cursor: pointer; }
+  .rationale-section { margin-top: 0.4rem; padding-left: 1rem; border-left: 2px solid #ecf0f1; }
+  .error-msg { color: #c0392b; font-family: monospace; font-size: 0.85rem;
+                background: #fadbd8; padding: 0.5rem; border-radius: 4px; }
+</style>
+</head>
+<body>
+
+<div class="banner">
+  <h1>Email Triage Report</h1>
+  <div class="meta">
+    Generated 2026-05-19T22:05:48+00:00 ·
+    Runtime 156.9s ·
+    20 emails processed ·
+    0 errors
+  </div>
+  <div class="chips"><strong>Priorities:</strong> <span class='chip' style='background:#c0392b; color:white;'>High: 10</span> <span class='chip' style='background:#d68910; color:white;'>Medium: 4</span> <span class='chip' style='background:#7f8c8d; color:white;'>Low: 6</span></div>
+  <div class="chips"><strong>Categories:</strong> <span class='chip' style='background:#2563eb; color:white;'>Deal Flow: 6</span> <span class='chip' style='background:#059669; color:white;'>Portfolio Update: 4</span> <span class='chip' style='background:#7c3aed; color:white;'>LP Communication: 3</span> <span class='chip' style='background:#475569; color:white;'>Internal: 3</span> <span class='chip' style='background:#6b7280; color:white;'>Other: 2</span> <span class='chip' style='background:#92400e; color:white;'>Compliance: 1</span> <span class='chip' style='background:#db2777; color:white;'>Press: 1</span></div>
+  <div class="chips"><strong>Rules fired:</strong> <span class='chip'>replies: 10</span> <span class='chip'>deadlines: 9</span> <span class='chip'>next_steps: 2</span></div>
+</div>
+
+
+    <div class="card">
+      <div class="card-header">
+        <span class="badge" style="background:#c0392b">High</span>
+        <span class="category" style="background:#2563eb">Deal Flow</span>
+        <span class="email-id">#1</span>
+        <span class="received">received 2026-05-19T09:00:00Z</span>
+      </div>
+      <div class="from-line"><strong>mark.chen@horizoncapital.com</strong></div>
+      <div class="subject">Re: Series B interest — CloudOps AI</div>
+      <div class="body">Following up on our conversation from last week. We&#x27;ve completed initial diligence and our partners are aligned on moving forward. Can we schedule a call this week to discuss term sheet timing?</div>
+      <div class="action-label">Summary</div><div class="summary">Horizon Capital has completed Series B diligence on CloudOps AI and seeks to schedule a call this week to discuss term sheet timing.</div>
+      
+      
+        <div class="action">
+          <div class="action-label">Suggested reply</div>
+          <div class="action-body reply">Hi Mark, great to hear that Horizon has completed diligence and that your partners are aligned — that&#x27;s an encouraging signal for CloudOps AI. I&#x27;d be glad to connect this week to walk through term sheet timing; I&#x27;m available [insert available times, e.g., Wednesday or Thursday afternoon ET] — does any of that work for you? Please send over a calendar invite and we can make sure the right people are on the call. Looking forward to it.
+
+Best,
+Alex</div>
+        </div>
+        
+        <div class="action">
+          <div class="action-label">Deadline</div>
+          <div class="action-body">
+            <strong>this week</strong> <span class="date-iso">→ 2026-05-22</span>
+            <span class="anchor">(received 2026-05-19T09:00:00Z)</span>
+            <div class="deadline-action">Schedule a call with Horizon Capital to discuss CloudOps AI term sheet timing</div>
+          </div>
+        </div>
+        
+      <details class='rationale'><summary>Why did the agent decide this?</summary><div class='rationale-section'><strong>Classification rationale:</strong> This is a follow-up on an active Series B investment opportunity (CloudOps AI) where the sender&#x27;s firm has completed diligence and is ready to advance to term sheet discussion. The request to schedule a call &#x27;this week&#x27; creates a near-term action item. This is clearly Deal Flow (new investment opportunity in motion). Priority is High because an active deal with partner alignment and imminent term sheet discussion materially impacts deal velocity and outcome. The email contains a time-bounded ask (&#x27;this week&#x27;), so has_deadline is true. No portfolio company problem is indicated, so portco_problem_flagged is false.</div><div class='rationale-section'><strong>Action rationale:</strong> reply_draft fires because priority is High; deadline fires because has_deadline is true. For reply_draft: I reference Mark by name, acknowledge diligence completion and partner alignment, and propose a concrete next step with a bracketed placeholder for the specific time slot since Alex hasn&#x27;t provided one. Tone is formal to match a banker/investor counterpart. For deadline: the email says &#x27;this week&#x27; — received Tuesday 2026-05-19, so &#x27;this week&#x27; resolves to Friday 2026-05-22 per the EOW convention. action_required is to schedule a call to discuss term sheet timing.</div></details>
+    </div>
+    
+
+    <div class="card">
+      <div class="card-header">
+        <span class="badge" style="background:#c0392b">High</span>
+        <span class="category" style="background:#7c3aed">LP Communication</span>
+        <span class="email-id">#3</span>
+        <span class="received">received 2026-05-19T09:00:00Z</span>
+      </div>
+      <div class="from-line"><strong>james.thornton@lpfund.com</strong></div>
+      <div class="subject">Capital Call Notice Question</div>
+      <div class="body">We received the capital call notice dated April 28th. Can you confirm the wire instructions and deadline? We want to make sure we process this on time.</div>
+      <div class="action-label">Summary</div><div class="summary">LP fund requesting confirmation of wire instructions and deadline for capital call notice dated April 28th.</div>
+      
+      
+        <div class="action">
+          <div class="action-label">Suggested reply</div>
+          <div class="action-body reply">Hi James,
+
+Thank you for reaching out regarding the capital call notice dated April 28th — we&#x27;re glad to hear you&#x27;re moving forward with processing. The wire instructions are as follows: [insert wire instructions], and the funding deadline is [insert deadline date]. Please don&#x27;t hesitate to reach out if you have any questions or need additional documentation to complete the transfer.
+
+Best regards,
+Alex Carter</div>
+        </div>
+        
+      <details class='rationale'><summary>Why did the agent decide this?</summary><div class='rationale-section'><strong>Classification rationale:</strong> This is an LP (Limited Partner) reaching out about a capital call notice—a core LP Communication. The LP is asking for confirmation of wire instructions and deadline for a capital call, which is a standard LP funding obligation. The email references a specific capital call notice (April 28th) and expresses intent to process on time, indicating this is an active funding matter. Priority is High because capital calls are time-sensitive commitments that directly affect fund operations and LP relationships; delays can trigger defaults or penalties. The email contains a deadline reference (&#x27;on time&#x27;) but no explicit date in the body itself, so has_deadline is false (the deadline exists in the referenced notice, not stated here). No portco problem is indicated.</div><div class='rationale-section'><strong>Action rationale:</strong> Only reply_draft fired (priority is High). deadline and next_steps are null since has_deadline is false and portco_problem_flagged is false. I&#x27;ll write a formal reply to James (LP, so formal tone) referencing the April 28th capital call notice, confirming we&#x27;ll provide wire instructions and the deadline, using placeholders for the specific wire details and deadline date that only the partner can confirm.</div></details>
+    </div>
+    
+
+    <div class="card">
+      <div class="card-header">
+        <span class="badge" style="background:#c0392b">High</span>
+        <span class="category" style="background:#059669">Portfolio Update</span>
+        <span class="email-id">#7</span>
+        <span class="received">received 2026-05-19T09:00:00Z</span>
+      </div>
+      <div class="from-line"><strong>tom.nguyen@alphaportfolio.com</strong></div>
+      <div class="subject">Leadership transition at RetailTech Co</div>
+      <div class="body">Wanted to flag that our CEO submitted her resignation this morning effective in 30 days. The board is meeting Friday to discuss interim options. Will keep you posted.</div>
+      <div class="action-label">Summary</div><div class="summary">CEO of RetailTech Co resigned effective in 30 days; board meeting Friday to discuss interim leadership options.</div>
+      
+      
+        <div class="action">
+          <div class="action-label">Suggested reply</div>
+          <div class="action-body reply">Tom, thanks for the quick heads-up — a CEO resignation is obviously a significant development and I want to make sure we&#x27;re aligned going into Friday&#x27;s board meeting. Can you send me any materials the board will be reviewing ahead of the session so I can come prepared on interim options? I&#x27;d also like to connect with you before Friday to discuss our preferred candidates or internal names worth considering — [insert preferred time to connect]. Let&#x27;s make sure we&#x27;re moving fast given the 30-day clock.  
+
+Alex</div>
+        </div>
+        
+        <div class="action">
+          <div class="action-label">Deadline</div>
+          <div class="action-body">
+            <strong>Friday</strong> <span class="date-iso">→ 2026-05-22</span>
+            <span class="anchor">(received 2026-05-19T09:00:00Z)</span>
+            <div class="deadline-action">Prepare for and participate in the board meeting to discuss interim CEO options for RetailTech Co</div>
+          </div>
+        </div>
+        
+        <div class="action">
+          <div class="action-label">Recommended next steps</div>
+          <ol class="next-steps"><li>Request the board meeting materials from Tom before Friday so you can review interim leadership options the board will be considering and arrive with a clear position.</li><li>Identify and align internally on preferred interim CEO candidates or criteria before the Friday board meeting, given the 30-day resignation window creates urgency around succession.</li><li>Assess whether the 30-day transition timeline is sufficient for RetailTech Co&#x27;s current operational needs and flag any near-term risks (e.g., open fundraising, key customer relationships) that the outgoing CEO is managing.</li></ol>
+        </div>
+        
+      <details class='rationale'><summary>Why did the agent decide this?</summary><div class='rationale-section'><strong>Classification rationale:</strong> This is a Portfolio Update from an internal team member about RetailTech Co, a portfolio company. The email flags a material operational problem: CEO resignation with a 30-day notice period. This is a leadership departure, which qualifies as a portco problem. Priority is High because leadership transitions at portfolio companies require immediate board-level attention and can materially impact company performance and valuation. There is a concrete deadline (board meeting Friday, May 23), making has_deadline true. The portco_problem_flagged is true because this is a Portfolio Update category email that explicitly signals a leadership crisis.</div><div class='rationale-section'><strong>Action rationale:</strong> All three triggers fired. reply_draft: Priority is High, so I draft a reply from Alex to Tom. I reference the CEO resignation, the 30-day window, and the Friday board meeting. I keep it action-forward and conversational (internal teammate tone). I use a placeholder for any specific commitment Alex may want to make. deadline: The email references &#x27;Friday&#x27; as the board meeting date. Received at is Tuesday 2026-05-19, so Friday is 2026-05-22. deadline_text is &#x27;Friday&#x27;, deadline_date is 2026-05-22, deadline_weekday is Friday. action_required: Prepare for and engage with the board discussion on interim CEO options. next_steps: Category is Portfolio Update and portco_problem_flagged is true. I generate 2-3 concrete steps referencing the CEO resignation, 30-day window, and Friday board meeting.</div></details>
+    </div>
+    
+
+    <div class="card">
+      <div class="card-header">
+        <span class="badge" style="background:#c0392b">High</span>
+        <span class="category" style="background:#7c3aed">LP Communication</span>
+        <span class="email-id">#9</span>
+        <span class="received">received 2026-05-19T09:00:00Z</span>
+      </div>
+      <div class="from-line"><strong>lisa.park@mountainviewlp.com</strong></div>
+      <div class="subject">Quarterly performance review request</div>
+      <div class="body">Hi, we&#x27;re preparing our Q1 LP report and wanted to request updated performance metrics across your current fund. Specifically IRR, MOIC, and DPI by portfolio company if available. Deadline is May 20th.</div>
+      <div class="action-label">Summary</div><div class="summary">Mountain View LP requests Q1 performance metrics (IRR, MOIC, DPI by portfolio company) for LP report with May 20th deadline.</div>
+      
+      
+        <div class="action">
+          <div class="action-label">Suggested reply</div>
+          <div class="action-body reply">Hi Lisa,
+
+Thank you for reaching out — we&#x27;re happy to support Mountain View LP&#x27;s Q1 report preparation. We&#x27;ll compile the IRR, MOIC, and DPI figures by portfolio company and have them to you [insert delivery time] ahead of your May 20th deadline. If there are any specific fund vintages or portfolio companies you&#x27;d like us to prioritize, please let us know and we&#x27;ll flag those first.
+
+Best regards,
+Alex Carter</div>
+        </div>
+        
+        <div class="action">
+          <div class="action-label">Deadline</div>
+          <div class="action-body">
+            <strong>May 20th</strong> <span class="date-iso">→ 2026-05-20</span>
+            <span class="anchor">(received 2026-05-19T09:00:00Z)</span>
+            <div class="deadline-action">Compile and send IRR, MOIC, and DPI by portfolio company to Mountain View LP for their Q1 LP report</div>
+          </div>
+        </div>
+        
+      <details class='rationale'><summary>Why did the agent decide this?</summary><div class='rationale-section'><strong>Classification rationale:</strong> This is an LP Communication email. Lisa Park is requesting performance metrics from a Limited Partner perspective for the Q1 LP report. The email explicitly states a deadline of May 20th (tomorrow from the received date of May 19th), making this time-sensitive. The request is routine reporting but with an imminent deadline, warranting Medium-High priority. There is no portco problem indicated—this is standard LP reporting. The deadline is concrete (May 20th), so has_deadline is true.</div><div class='rationale-section'><strong>Action rationale:</strong> Two triggers fired: reply_draft (priority is High) and deadline (has_deadline is true). For reply_draft: I&#x27;ll write a formal reply to Lisa (LP/banker tone), referencing the specific metrics she requested (IRR, MOIC, DPI by portfolio company) and the May 20th deadline. I&#x27;ll use a placeholder for the specific delivery time since Alex hasn&#x27;t confirmed it. For deadline: deadline_text is &#x27;May 20th&#x27;, which resolves to 2026-05-20 (Wednesday). deadline_weekday is Wednesday. action_required is to pull and send IRR, MOIC, and DPI by portfolio company to Mountain View LP. next_steps is null since portco_problem_flagged is false.</div></details>
+    </div>
+    
+
+    <div class="card">
+      <div class="card-header">
+        <span class="badge" style="background:#c0392b">High</span>
+        <span class="category" style="background:#2563eb">Deal Flow</span>
+        <span class="email-id">#10</span>
+        <span class="received">received 2026-05-19T09:00:00Z</span>
+      </div>
+      <div class="from-line"><strong>noreply@docusign.com</strong></div>
+      <div class="subject">Document ready for signature — NDA with Apex Growth Partners</div>
+      <div class="body">Alex Carter, a document has been sent to you for electronic signature. Please review and sign at your earliest convenience.</div>
+      <div class="action-label">Summary</div><div class="summary">DocuSign notification: NDA with Apex Growth Partners awaiting signature from Alex Carter.</div>
+      
+      
+        <div class="action">
+          <div class="action-label">Suggested reply</div>
+          <div class="action-body reply">Hi [Apex Growth Partners contact name],
+
+I&#x27;ve received the DocuSign request for the NDA and will review and return the signed document [insert turnaround — e.g., by EOD today]. Once executed, I&#x27;d welcome a brief introductory call to discuss the opportunity in more detail — please feel free to share your availability. Looking forward to moving things forward.
+
+Best,
+Alex Carter</div>
+        </div>
+        
+      <details class='rationale'><summary>Why did the agent decide this?</summary><div class='rationale-section'><strong>Classification rationale:</strong> This is a DocuSign notification for an NDA signature request with Apex Growth Partners. NDAs are foundational deal documents that precede investment diligence and term sheets. The tiebreaker rule clarifies that the underlying transaction (a potential new investment opportunity) governs the category, not the delivery system. This is Deal Flow. Priority is High because active deal progression requires prompt execution of legal documents—delay in signing could slow momentum. No explicit deadline is stated in the email body (&quot;earliest convenience&quot; is not a concrete date), so has_deadline is false. No portfolio company problem is indicated. The summary captures the key fact: NDA signature needed for a prospective investment partner.</div><div class='rationale-section'><strong>Action rationale:</strong> Only reply_draft fired (priority is High). I need to draft a reply on behalf of Alex Carter acknowledging the NDA signature request from Apex Growth Partners. However, this is a DocuSign noreply notification — there is no named individual sender to address by first name. I&#x27;ll keep the draft practical and action-forward, noting that Alex will review and sign the document, and suggesting a next step with Apex Growth Partners. Since no specific contact name, timeline, or meeting details are provided in the email, I&#x27;ll use a placeholder for the turnaround commitment. deadline and next_steps are null since those triggers did not fire.</div></details>
+    </div>
+    
+
+    <div class="card">
+      <div class="card-header">
+        <span class="badge" style="background:#c0392b">High</span>
+        <span class="category" style="background:#2563eb">Deal Flow</span>
+        <span class="email-id">#11</span>
+        <span class="received">received 2026-05-19T09:00:00Z</span>
+      </div>
+      <div class="from-line"><strong>kevin.shaw@apexgrowth.com</strong></div>
+      <div class="subject">Follow-up — NDA and next steps</div>
+      <div class="body">Just wanted to make sure you received the NDA from DocuSign. Once that&#x27;s executed we can share the CIM. We have two other parties engaged so want to keep things moving.</div>
+      <div class="action-label">Summary</div><div class="summary">Follow-up on NDA execution for a new investment opportunity; CIM to be shared once NDA is signed. Two other parties are engaged in the process.</div>
+      
+      
+        <div class="action">
+          <div class="action-label">Suggested reply</div>
+          <div class="action-body reply">Hi Kevin,
+
+Thanks for the follow-up — I did receive the DocuSign and will get the NDA executed [insert turnaround]. Appreciate you flagging the other parties; we want to stay in the process and are keen to review the CIM as soon as we have the NDA back to you. I&#x27;ll prioritize this on our end.
+
+Best,
+Alex</div>
+        </div>
+        
+      <details class='rationale'><summary>Why did the agent decide this?</summary><div class='rationale-section'><strong>Classification rationale:</strong> This is a follow-up on an investment opportunity in active motion. The sender is referencing an NDA (non-disclosure agreement) and CIM (confidential information memorandum), which are standard deal flow documents. The mention of &#x27;two other parties engaged&#x27; and &#x27;want to keep things moving&#x27; signals competitive tension and an active transaction. This is clearly Deal Flow, not a portfolio update or other category. Priority is High because there&#x27;s active deal momentum with competitive pressure and a clear next step (NDA execution) that gates access to diligence materials. No explicit deadline is stated (no date like &#x27;May 25&#x27; or &#x27;by EOW&#x27;), so has_deadline is false. No portco problem is indicated.</div><div class='rationale-section'><strong>Action rationale:</strong> Only reply_draft fired (priority is High). I need to write a draft reply from Alex Carter to Kevin Shaw, referencing the NDA, CIM, and competitive context. Deadline and next_steps are null since has_deadline is false and category is not Portfolio Update with a portco problem.</div></details>
+    </div>
+    
+
+    <div class="card">
+      <div class="card-header">
+        <span class="badge" style="background:#c0392b">High</span>
+        <span class="category" style="background:#2563eb">Deal Flow</span>
+        <span class="email-id">#13</span>
+        <span class="received">received 2026-05-19T09:00:00Z</span>
+      </div>
+      <div class="from-line"><strong>robert.klein@creditsuisse.com</strong></div>
+      <div class="subject">Debt financing options for portfolio company acquisition</div>
+      <div class="body">Following our call, I&#x27;ve put together three financing structures for the proposed add-on acquisition. Happy to walk through the pros and cons on a call this week. Let me know your availability.</div>
+      <div class="action-label">Summary</div><div class="summary">Credit Suisse proposes three debt financing structures for a portfolio company add-on acquisition; requests call this week to review options.</div>
+      
+      
+        <div class="action">
+          <div class="action-label">Suggested reply</div>
+          <div class="action-body reply">Hi Robert,
+
+Thank you for pulling together the three financing structures — I appreciate the quick turnaround following our call. I&#x27;d like to schedule time this week to walk through the options in detail; I&#x27;m available [insert your available times this week] if any of those work on your end. Please also send over the materials ahead of the call so I can review the structures beforehand.
+
+Looking forward to it.
+
+Best,
+Alex</div>
+        </div>
+        
+        <div class="action">
+          <div class="action-label">Deadline</div>
+          <div class="action-body">
+            <strong>this week</strong> <span class="date-iso">→ 2026-05-22</span>
+            <span class="anchor">(received 2026-05-19T09:00:00Z)</span>
+            <div class="deadline-action">Schedule a call with Robert Klein to review the three debt financing structures for the add-on acquisition</div>
+          </div>
+        </div>
+        
+      <details class='rationale'><summary>Why did the agent decide this?</summary><div class='rationale-section'><strong>Classification rationale:</strong> This is a bank (Credit Suisse) offering debt financing structures for a portfolio company acquisition. Per the tiebreaker rule, debt financing for a portfolio company *acquisition* is Deal Flow, not Portfolio Update, because it concerns a new transaction. The email requests a call &#x27;this week&#x27; which is a time-bounded ask. Priority is High because active deal financing is in motion and delay could impact transaction timing. No portco problem is flagged—this is a routine financing proposal. No deadline date is explicitly stated (only &#x27;this week&#x27;), so has_deadline is false per the strict definition requiring a concrete date or relative time-bounded phrase; &#x27;this week&#x27; counts as time-bounded but the instruction specifies &#x27;by EOW&#x27;, &#x27;before Thursday&#x27;, &#x27;this week&#x27; as examples that DO count—&#x27;this week&#x27; is included, so has_deadline is true.</div><div class='rationale-section'><strong>Action rationale:</strong> reply_draft fired (High priority): Draft a reply from Alex Carter to Robert Klein, referencing the three financing structures and proposing a call this week. Tone should be formal (banker). I&#x27;ll use a placeholder for the specific time since no times were proposed in the email. deadline fired (has_deadline true): The email says &#x27;this week&#x27; — per pinned conventions, &#x27;this week&#x27; resolves to the upcoming Friday. Received Tuesday 2026-05-19, so Friday is 2026-05-22. next_steps is null (category is Deal Flow, not Portfolio Update with portco_problem_flagged).</div></details>
+    </div>
+    
+
+    <div class="card">
+      <div class="card-header">
+        <span class="badge" style="background:#c0392b">High</span>
+        <span class="category" style="background:#2563eb">Deal Flow</span>
+        <span class="email-id">#14</span>
+        <span class="received">received 2026-05-19T09:00:00Z</span>
+      </div>
+      <div class="from-line"><strong>anna.steele@harborcapital.com</strong></div>
+      <div class="subject">Re: Co-investment opportunity — HealthTech Platform</div>
+      <div class="body">We&#x27;ve reviewed the materials and our team is supportive of co-investing up to $5M alongside your fund. Can we get on a call to align on timing and documentation before the close?</div>
+      <div class="action-label">Summary</div><div class="summary">Harbor Capital is ready to co-invest $5M in the HealthTech Platform deal and requests a call to align on timing and documentation before close.</div>
+      
+      
+        <div class="action">
+          <div class="action-label">Suggested reply</div>
+          <div class="action-body reply">Hi Anna,
+
+Great to hear — we&#x27;re glad Harbor Capital is supportive and a $5M co-investment would be a strong addition to the round. I&#x27;d like to get on a call this week to walk through timing and documentation requirements before the close. Does [insert proposed time/date] work for your team?
+
+I&#x27;ll have our counsel loop in on the doc side so we can move efficiently once we&#x27;re aligned.
+
+Best,
+Alex</div>
+        </div>
+        
+      <details class='rationale'><summary>Why did the agent decide this?</summary><div class='rationale-section'><strong>Classification rationale:</strong> This is a co-investment offer from another fund (Harbor Capital) expressing interest in participating in a deal. The email references reviewing materials, a capital commitment ($5M), and next steps (call on timing and documentation). This is clearly deal flow — a new investment opportunity in motion. Priority is High because an active co-investor is ready to move forward and delay in alignment could jeopardize the co-investment or close timing. No explicit deadline is stated (no date, &#x27;EOW&#x27;, &#x27;by X date&#x27;), so has_deadline is false. This is not a portfolio update, so portco_problem_flagged is false.</div><div class='rationale-section'><strong>Action rationale:</strong> Only reply_draft fired (priority is High). deadline and next_steps are null since has_deadline is false and portco_problem_flagged is false. I&#x27;ll write a reply to Anna referencing the $5M commitment, the HealthTech Platform deal, and propose aligning on a call — using a placeholder for the specific time since no times were proposed in the email.</div></details>
+    </div>
+    
+
+    <div class="card">
+      <div class="card-header">
+        <span class="badge" style="background:#c0392b">High</span>
+        <span class="category" style="background:#059669">Portfolio Update</span>
+        <span class="email-id">#16</span>
+        <span class="received">received 2026-05-19T09:00:00Z</span>
+      </div>
+      <div class="from-line"><strong>michael.ford@portfolioco.com</strong></div>
+      <div class="subject">Urgent — customer churn spike in April</div>
+      <div class="body">Wanted to flag this before the board call. We saw an unexpected 12% churn spike in April concentrated in our SMB segment. We believe it&#x27;s tied to a pricing change we rolled out in March. Working on a response plan now.</div>
+      <div class="action-label">Summary</div><div class="summary">Portfolio company experienced unexpected 12% customer churn spike in April concentrated in SMB segment, attributed to March pricing change; management developing response plan ahead of board call.</div>
+      
+      
+        <div class="action">
+          <div class="action-label">Suggested reply</div>
+          <div class="action-body reply">Michael, thanks for flagging this ahead of the board call — a 12% churn spike concentrated in SMB is material and we want to move quickly. Can you share the underlying cohort data breaking down churn by customer tenure, ARR band, and acquisition channel so we can isolate how much of this is directly attributable to the March pricing change versus other factors? I&#x27;d also like to get on a call [insert proposed time] to walk through the response plan before it&#x27;s finalized. Let&#x27;s make sure we&#x27;re aligned on messaging and remediation steps before the board sees this. — Alex</div>
+        </div>
+        
+        <div class="action">
+          <div class="action-label">Recommended next steps</div>
+          <ol class="next-steps"><li>Request the SMB churn cohort breakdown from Michael segmented by customer tenure, ARR band, and acquisition channel to determine how much of the 12% spike is directly caused by the March pricing change versus other factors.</li><li>Review the response plan management is developing before it&#x27;s finalized, and pressure-test whether it includes a potential pricing rollback or tiered pricing option for the SMB segment.</li><li>Coordinate with Michael on board call messaging to ensure the churn spike, its root cause attribution to the March pricing change, and the remediation plan are presented with sufficient data to preempt board concern.</li></ol>
+        </div>
+        
+      <details class='rationale'><summary>Why did the agent decide this?</summary><div class='rationale-section'><strong>Classification rationale:</strong> This is a Portfolio Update from a portfolio company founder/executive flagging an operational problem (customer churn spike of 12% in the SMB segment). The email explicitly indicates a problem requiring management attention and a response plan, which qualifies as a portco_problem_flagged signal. The subject line says &#x27;Urgent&#x27; and mentions timing relative to a board call, suggesting time-sensitivity, but there is no explicit deadline stated (no specific date like &#x27;May 25th&#x27; or relative time like &#x27;by EOW&#x27;). Given the operational crisis nature and the mention of &#x27;before the board call,&#x27; this warrants High priority — a 12% churn spike is material and requires immediate partner awareness. The category is Portfolio Update because it concerns an existing portfolio company&#x27;s operations.</div><div class='rationale-section'><strong>Action rationale:</strong> reply_draft fires because priority is High — I&#x27;ll draft a reply from Alex to Michael referencing the 12% SMB churn spike and the March pricing change, proposing a concrete next step before the board call. next_steps fires because category is Portfolio Update and portco_problem_flagged is true — I&#x27;ll write 2-3 concrete partner actions tied to specifics in the email. deadline is null because has_deadline is false. No deadline was stated in the email.</div></details>
+    </div>
+    
+
+    <div class="card">
+      <div class="card-header">
+        <span class="badge" style="background:#c0392b">High</span>
+        <span class="category" style="background:#7c3aed">LP Communication</span>
+        <span class="email-id">#18</span>
+        <span class="received">received 2026-05-19T09:00:00Z</span>
+      </div>
+      <div class="from-line"><strong>dan.okafor@lpfund.com</strong></div>
+      <div class="subject">Fund III commitment — increasing allocation</div>
+      <div class="body">After our recent conversation I&#x27;ve been authorized to increase our Fund III commitment from $25M to $40M. Please send updated subscription documents when ready.</div>
+      <div class="action-label">Summary</div><div class="summary">LP (lpfund.com) increasing Fund III commitment from $25M to $40M; requests updated subscription documents.</div>
+      
+      
+        <div class="action">
+          <div class="action-label">Suggested reply</div>
+          <div class="action-body reply">Dear Dan,
+
+Thank you for the update — we&#x27;re pleased to hear you&#x27;ve been authorized to increase your Fund III commitment from $25M to $40M. I&#x27;ll have our team prepare the updated subscription documents reflecting the revised allocation and send them over to you [insert turnaround timeline].
+
+Please let me know if there are any specific instructions or contacts on your end we should coordinate with for the updated documentation. We look forward to finalizing this.
+
+Best regards,
+Alex Carter</div>
+        </div>
+        
+      <details class='rationale'><summary>Why did the agent decide this?</summary><div class='rationale-section'><strong>Classification rationale:</strong> This is a Limited Partner (LP) communication regarding a capital commitment increase for Fund III. Dan Okafor is from an LP fund (lpfund.com) and is formally committing additional capital ($25M increase to $40M total). This is a core LP Communication activity. Priority is High because it involves active capital commitment and requires prompt execution of subscription documents—delay could jeopardize the LP&#x27;s increased allocation. No explicit deadline is stated in the email body (no date, &#x27;by EOW&#x27;, &#x27;this week&#x27;, etc.), so has_deadline is false. This is not a portfolio company update, so portco_problem_flagged is false.</div><div class='rationale-section'><strong>Action rationale:</strong> Only reply_draft fired (priority is High). deadline and next_steps are null since has_deadline is false and portco_problem_flagged is false. I&#x27;ll write a formal, action-forward reply to Dan referencing the specific commitment increase from $25M to $40M and committing to send updated subscription documents, using a placeholder for the specific turnaround time since Alex cannot confirm that without checking internally.</div></details>
+    </div>
+    
+
+    <div class="card">
+      <div class="card-header">
+        <span class="badge" style="background:#d68910">Medium</span>
+        <span class="category" style="background:#2563eb">Deal Flow</span>
+        <span class="email-id">#6</span>
+        <span class="received">received 2026-05-19T09:00:00Z</span>
+      </div>
+      <div class="from-line"><strong>angela.ross@venturebridge.com</strong></div>
+      <div class="subject">New deal — B2B SaaS, $8M ARR, logistics vertical</div>
+      <div class="body">Wanted to get this in front of you before we go broad. Logistics SaaS company, $8M ARR, growing 35% YoY, founder looking for a growth equity partner. Happy to send the deck if there&#x27;s interest.</div>
+      <div class="action-label">Summary</div><div class="summary">VentureBridge pitching B2B SaaS logistics company, $8M ARR, 35% YoY growth, seeking growth equity partner; deck available on request.</div>
+      
+      <div class="no-action">No action required. Marked as read.</div>
+      <details class='rationale'><summary>Why did the agent decide this?</summary><div class='rationale-section'><strong>Classification rationale:</strong> This is a new investment opportunity being pitched by an external party (VentureBridge). The email introduces a potential deal target with financial metrics and growth profile, and offers to share materials (deck). This is classic Deal Flow. Priority is Medium because while it&#x27;s an active opportunity, there&#x27;s no indication of time pressure, competing bidders, or an imminent deadline—it&#x27;s an initial soft pitch. No deadline is stated. No portco problem applies since this is not a portfolio company update.</div></details>
+    </div>
+    
+
+    <div class="card">
+      <div class="card-header">
+        <span class="badge" style="background:#d68910">Medium</span>
+        <span class="category" style="background:#92400e">Compliance</span>
+        <span class="email-id">#8</span>
+        <span class="received">received 2026-05-19T09:00:00Z</span>
+      </div>
+      <div class="from-line"><strong>compliance@regulatorywatch.com</strong></div>
+      <div class="subject">New SEC disclosure requirements — action required by June 30</div>
+      <div class="body">A reminder that new SEC rules affecting private fund advisers take effect June 30th. Your compliance team should review the updated Form PF requirements. Please confirm receipt.</div>
+      <div class="action-label">Summary</div><div class="summary">New SEC Form PF disclosure requirements take effect June 30th; compliance team review and receipt confirmation required.</div>
+      
+      
+        <div class="action">
+          <div class="action-label">Deadline</div>
+          <div class="action-body">
+            <strong>by June 30</strong> <span class="date-iso">→ 2026-06-30</span>
+            <span class="anchor">(received 2026-05-19T09:00:00Z)</span>
+            <div class="deadline-action">Review updated Form PF requirements and confirm receipt to compliance</div>
+          </div>
+        </div>
+        
+      <details class='rationale'><summary>Why did the agent decide this?</summary><div class='rationale-section'><strong>Classification rationale:</strong> This is a regulatory compliance notification with a specific deadline (June 30th, which is 42 days from the received date of May 19th). The email is from a regulatory watch service and concerns SEC disclosure requirements for private fund advisers—a direct compliance obligation. The deadline exceeds 30 days, so priority is Medium rather than High, but the regulatory nature and explicit action requirement (&#x27;action required&#x27;, &#x27;confirm receipt&#x27;) warrant Medium over Low. has_deadline is true because June 30th is explicitly stated. portco_problem_flagged is false because this is not a Portfolio Update category.</div><div class='rationale-section'><strong>Action rationale:</strong> The email contains an explicit deadline: &#x27;by June 30&#x27;. The received_at timestamp is 2026-05-19 (Tuesday). June 30, 2026 is a Tuesday, 42 days later. The deadline_text is extracted verbatim from the subject line. The action_required is to review Form PF requirements and confirm receipt, as stated in the email body. Since only the deadline trigger fired, reply_draft and next_steps are null.</div></details>
+    </div>
+    
+
+    <div class="card">
+      <div class="card-header">
+        <span class="badge" style="background:#d68910">Medium</span>
+        <span class="category" style="background:#475569">Internal</span>
+        <span class="email-id">#12</span>
+        <span class="received">received 2026-05-19T09:00:00Z</span>
+      </div>
+      <div class="from-line"><strong>priya.mehta@internalteam.com</strong></div>
+      <div class="subject">Updated financial model — please review before Thursday</div>
+      <div class="body">Hi, I&#x27;ve attached the revised model with the updated revenue assumptions we discussed. Can you take a look before the partner meeting Thursday? A few of the scenarios still need your input on the exit multiple range.</div>
+      <div class="action-label">Summary</div><div class="summary">Priya requests review of updated financial model with revised revenue assumptions and exit multiple scenarios before Thursday partner meeting.</div>
+      
+      
+        <div class="action">
+          <div class="action-label">Deadline</div>
+          <div class="action-body">
+            <strong>before Thursday</strong> <span class="date-iso">→ 2026-05-21</span>
+            <span class="anchor">(received 2026-05-19T09:00:00Z)</span>
+            <div class="deadline-action">Review updated financial model and provide input on exit multiple range scenarios</div>
+          </div>
+        </div>
+        
+      <details class='rationale'><summary>Why did the agent decide this?</summary><div class='rationale-section'><strong>Classification rationale:</strong> This is an internal email from a team member requesting a model review before a near-term meeting (Thursday, 2 days away). The sender is asking for feedback on financial scenarios before a partner meeting, which is a routine internal task with a concrete deadline. This is clearly Internal category. Priority is Medium because it&#x27;s a scheduled internal review with a near-term deadline but not a deal in active motion or crisis. The email has a deadline (&#x27;before Thursday&#x27;), so has_deadline is true. There is no portfolio company mentioned, so portco_problem_flagged is false.</div><div class='rationale-section'><strong>Action rationale:</strong> Only the deadline trigger fired. Priority is Medium (not High), so reply_draft is null. Category is Internal and portco_problem_flagged is false, so next_steps is null. The email contains a clear deadline: &#x27;before Thursday&#x27;. Received at is Tuesday, May 19, 2026. &#x27;Before Thursday&#x27; resolves to Thursday, May 21, 2026 (2 days out). The action required is to review the financial model and provide input on exit multiple scenarios.</div></details>
+    </div>
+    
+
+    <div class="card">
+      <div class="card-header">
+        <span class="badge" style="background:#d68910">Medium</span>
+        <span class="category" style="background:#059669">Portfolio Update</span>
+        <span class="email-id">#20</span>
+        <span class="received">received 2026-05-19T09:00:00Z</span>
+      </div>
+      <div class="from-line"><strong>alex.turner@portfolioco.com</strong></div>
+      <div class="subject">Board meeting prep — deck and materials</div>
+      <div class="body">Sending over the board deck for next week&#x27;s meeting. Still waiting on the legal update from outside counsel. Will send that separately once it comes in. Let me know if anything looks off.</div>
+      <div class="action-label">Summary</div><div class="summary">Portfolio company sending board deck for next week&#x27;s meeting; legal update from outside counsel to follow separately.</div>
+      
+      <div class="no-action">No action required. Marked as read.</div>
+      <details class='rationale'><summary>Why did the agent decide this?</summary><div class='rationale-section'><strong>Classification rationale:</strong> This is a routine board preparation email from a portfolio company executive sharing materials for an upcoming board meeting. The email is informational with a minor action item (review the deck and flag issues), but no crisis, operational problem, or time-critical deadline is indicated. The mention of waiting on legal counsel is standard governance process, not a flagged problem. Category is Portfolio Update (operational/governance update from a portco). Priority is Medium because there is a near-term board meeting (next week) requiring review, but no urgency signal or problem. No explicit deadline date is stated in the email body (&quot;next week&quot; is relative but not a specific date like &quot;May 27&quot;), so has_deadline is false. No portco problem is flagged—this is routine board prep.</div></details>
+    </div>
+    
+
+    <div class="card">
+      <div class="card-header">
+        <span class="badge" style="background:#7f8c8d">Low</span>
+        <span class="category" style="background:#059669">Portfolio Update</span>
+        <span class="email-id">#2</span>
+        <span class="received">received 2026-05-19T09:00:00Z</span>
+      </div>
+      <div class="from-line"><strong>sarah.williams@portfolioco.com</strong></div>
+      <div class="subject">Q1 Operating Update — Momentum Software</div>
+      <div class="body">Hi team, attached is our Q1 board pack. Revenue came in at $4.2M, up 18% QoQ. We missed EBITDA by about 8% due to a one-time infrastructure migration cost. Happy to walk through on our next call.</div>
+      <div class="action-label">Summary</div><div class="summary">Momentum Software Q1 board pack: $4.2M revenue (+18% QoQ), EBITDA missed by 8% due to one-time infrastructure migration cost.</div>
+      
+      <div class="no-action">No action required. Marked as read.</div>
+      <details class='rationale'><summary>Why did the agent decide this?</summary><div class='rationale-section'><strong>Classification rationale:</strong> This is a routine quarterly operating update from a portfolio company (Momentum Software) with financial metrics and board materials. Revenue growth is solid (18% QoQ), and the EBITDA miss is explained as a one-time infrastructure cost with no indication of an underlying operational or governance problem. The email is informational with an offer to discuss further but no urgent action item or deadline stated. This is clearly Portfolio Update category, Low priority (standard quarterly reporting), no deadline mentioned, and no portco problem flagged since the miss is explained and temporary.</div></details>
+    </div>
+    
+
+    <div class="card">
+      <div class="card-header">
+        <span class="badge" style="background:#7f8c8d">Low</span>
+        <span class="category" style="background:#6b7280">Other</span>
+        <span class="email-id">#4</span>
+        <span class="received">received 2026-05-19T09:00:00Z</span>
+      </div>
+      <div class="from-line"><strong>recruiter@talentfirm.com</strong></div>
+      <div class="subject">Top CFO candidates for your review</div>
+      <div class="body">Hi, I wanted to share three CFO profiles that match the criteria we discussed. All three have PE-backed company experience. Let me know when you&#x27;d like to set up screenings.</div>
+      <div class="action-label">Summary</div><div class="summary">Recruiter offering three CFO candidates with PE experience for screening consideration.</div>
+      
+      <div class="no-action">No action required. Marked as read.</div>
+      <details class='rationale'><summary>Why did the agent decide this?</summary><div class='rationale-section'><strong>Classification rationale:</strong> This is a recruiter outreach offering CFO candidate profiles. It&#x27;s not from an LP, not about a portfolio company operational issue, not a deal, not compliance, not internal firm business, and not press. This falls squarely into &#x27;Other&#x27; — vendor/recruiter outreach. Priority is Low because there&#x27;s no time-sensitive deal pressure, capital commitment, or crisis; it&#x27;s a routine recruiting inquiry with no stated deadline. No deadline is mentioned in the email body or subject. No portfolio company problem is flagged.</div></details>
+    </div>
+    
+
+    <div class="card">
+      <div class="card-header">
+        <span class="badge" style="background:#7f8c8d">Low</span>
+        <span class="category" style="background:#475569">Internal</span>
+        <span class="email-id">#5</span>
+        <span class="received">received 2026-05-19T09:00:00Z</span>
+      </div>
+      <div class="from-line"><strong>david.park@internalteam.com</strong></div>
+      <div class="subject">Team offsite — dates and logistics</div>
+      <div class="body">Hey, locking in the offsite for June 12-13 in the Hamptons. Can everyone confirm availability by EOW? I&#x27;ll send hotel info once we have a headcount.</div>
+      <div class="action-label">Summary</div><div class="summary">Team offsite scheduled for June 12-13 in the Hamptons; confirmation of availability requested by end of week.</div>
+      
+      
+        <div class="action">
+          <div class="action-label">Deadline</div>
+          <div class="action-body">
+            <strong>by EOW</strong> <span class="date-iso">→ 2026-05-22</span>
+            <span class="anchor">(received 2026-05-19T09:00:00Z)</span>
+            <div class="deadline-action">Confirm availability for the June 12-13 offsite in the Hamptons</div>
+          </div>
+        </div>
+        
+      <details class='rationale'><summary>Why did the agent decide this?</summary><div class='rationale-section'><strong>Classification rationale:</strong> This is an internal administrative email from a team member about scheduling and logistics for a company offsite. There is no deal activity, portfolio company issue, LP communication, compliance requirement, or external stakeholder engagement. The email contains a time-bounded ask (&#x27;confirm availability by EOW&#x27;), which qualifies as a deadline. However, the content is purely operational scheduling with no material business impact if delayed by a day or two. Priority is Low because this is routine admin with no deal or portfolio risk. No portco problem is present.</div><div class='rationale-section'><strong>Action rationale:</strong> The email contains a deadline trigger: &#x27;confirm availability by EOW&#x27; (end of week). Received on Tuesday, May 19, 2026, &#x27;EOW&#x27; resolves to Friday, May 22, 2026. Priority is Low, so reply_draft does not fire. Category is Internal and portco_problem_flagged is false, so next_steps does not fire. Only deadline is populated.</div></details>
+    </div>
+    
+
+    <div class="card">
+      <div class="card-header">
+        <span class="badge" style="background:#7f8c8d">Low</span>
+        <span class="category" style="background:#6b7280">Other</span>
+        <span class="email-id">#15</span>
+        <span class="received">received 2026-05-19T09:00:00Z</span>
+      </div>
+      <div class="from-line"><strong>events@peconference.com</strong></div>
+      <div class="subject">Speaker invitation — Private Equity Innovation Summit 2026</div>
+      <div class="body">We&#x27;d like to invite you to speak on a panel at this year&#x27;s PE Innovation Summit in Chicago on September 18th. The panel topic is AI adoption in middle market PE. Please let us know by June 1st if you&#x27;re available.</div>
+      <div class="action-label">Summary</div><div class="summary">Conference organizer inviting a speaker to the PE Innovation Summit panel on AI adoption in middle market PE; response requested by June 1st.</div>
+      
+      
+        <div class="action">
+          <div class="action-label">Deadline</div>
+          <div class="action-body">
+            <strong>by June 1st</strong> <span class="date-iso">→ 2026-06-01</span>
+            <span class="anchor">(received 2026-05-19T09:00:00Z)</span>
+            <div class="deadline-action">Confirm availability to speak on the AI adoption panel at the PE Innovation Summit</div>
+          </div>
+        </div>
+        
+      <details class='rationale'><summary>Why did the agent decide this?</summary><div class='rationale-section'><strong>Classification rationale:</strong> This is an invitation to speak at a conference. The sender is an external events organization, not a portfolio company, LP, or deal-related party. The email is informational/marketing in nature with no deal flow, portfolio operational content, LP capital matters, or compliance requirements. The June 1st deadline is noted, but conference speaking is discretionary and non-material to firm operations. Priority is Low because this is a voluntary engagement with no business-critical impact.</div><div class='rationale-section'><strong>Action rationale:</strong> The email contains a clear deadline: &#x27;by June 1st&#x27;. The received_at timestamp is 2026-05-19 (Tuesday). June 1st, 2026 is a Sunday, but in business context this resolves to the next business day, Monday, June 1st, 2026 (or interpreted as the Friday before if &#x27;by June 1st&#x27; means the business deadline). However, June 1st itself is explicitly stated as a concrete date in the current year. Deadline_date is 2026-06-01 (Monday). Deadline_weekday is Monday. Action_required is to confirm availability for the speaking panel. No reply_draft fires (priority is Low, not High). No next_steps fire (category is &#x27;Other&#x27;, not &#x27;Portfolio Update&#x27;). No portco_problem_flagged, so next_steps does not apply.</div></details>
+    </div>
+    
+
+    <div class="card">
+      <div class="card-header">
+        <span class="badge" style="background:#7f8c8d">Low</span>
+        <span class="category" style="background:#475569">Internal</span>
+        <span class="email-id">#17</span>
+        <span class="received">received 2026-05-19T09:00:00Z</span>
+      </div>
+      <div class="from-line"><strong>jennifer.wu@internalteam.com</strong></div>
+      <div class="subject">Expense report approvals pending</div>
+      <div class="body">Hi, there are four expense reports sitting in the queue waiting for your approval. Oldest one is from April 22nd. Can you take a look when you get a chance?</div>
+      <div class="action-label">Summary</div><div class="summary">Four expense reports pending approval; oldest from April 22nd.</div>
+      
+      <div class="no-action">No action required. Marked as read.</div>
+      <details class='rationale'><summary>Why did the agent decide this?</summary><div class='rationale-section'><strong>Classification rationale:</strong> This is an internal administrative email from a team member requesting approval of pending expense reports. There is no deal activity, LP communication, compliance deadline, portfolio company update, or external stakeholder involvement. The email is routine operational housekeeping with no time-critical urgency—expense report approvals are standard back-office work. While the oldest report is from April 22nd (nearly 4 weeks old), the sender uses soft language (&#x27;when you get a chance&#x27;) and there is no stated deadline or consequence for delay. This is clearly Low priority Internal category.</div></details>
+    </div>
+    
+
+    <div class="card">
+      <div class="card-header">
+        <span class="badge" style="background:#7f8c8d">Low</span>
+        <span class="category" style="background:#db2777">Press</span>
+        <span class="email-id">#19</span>
+        <span class="received">received 2026-05-19T09:00:00Z</span>
+      </div>
+      <div class="from-line"><strong>press@techcrunch.com</strong></div>
+      <div class="subject">Comment request — story on AI adoption in private equity</div>
+      <div class="body">Hi Alex, I&#x27;m a reporter at TechCrunch working on a piece about how PE firms are adopting AI internally. Would love a quick comment or a 15-minute call before Friday. No obligation.</div>
+      <div class="action-label">Summary</div><div class="summary">TechCrunch reporter requests optional comment on AI adoption in PE firms by Friday for a story.</div>
+      
+      
+        <div class="action">
+          <div class="action-label">Deadline</div>
+          <div class="action-body">
+            <strong>before Friday</strong>
+            <span class="anchor">(received 2026-05-19T09:00:00Z)</span>
+            <div class="deadline-action">Provide comment on AI adoption in PE or confirm availability for 15-minute call</div>
+          </div>
+        </div>
+        
+      <details class='rationale'><summary>Why did the agent decide this?</summary><div class='rationale-section'><strong>Classification rationale:</strong> This is a media inquiry from TechCrunch requesting a comment on a story about AI adoption in PE. The sender is a journalist, not a portfolio company or LP. The request has a soft deadline (&quot;before Friday&quot;) but is explicitly framed as &quot;no obligation&quot; and is a comment request, not a deal-critical or compliance matter. This is clearly Press category. Priority is Low because it&#x27;s optional commentary with no material business impact if declined or delayed. There is a deadline (Friday), so has_deadline is true. No portfolio company problem is indicated.</div><div class='rationale-section'><strong>Action rationale:</strong> The email is classified as Press with Low priority and has_deadline=true. Only the deadline trigger fired. The sender requests a comment &quot;before Friday&quot; with received_at on Tuesday, May 19, 2026. &quot;Before Friday&quot; resolves to Friday, May 23, 2026 (the upcoming Friday in the same week). The action required is to provide a comment or confirm availability for a brief call. reply_draft does not fire (priority is Low, not High). next_steps does not fire (category is Press, not Portfolio Update). No reply_draft, next_steps, or other fields are generated.</div></details>
+    </div>
+    
+
+</body>
+</html>
