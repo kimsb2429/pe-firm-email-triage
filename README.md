@@ -38,7 +38,7 @@ Two-call pipeline per email:
 2. **Skip check (Python):** if no rule will fire, mark read and skip Step 2.
 3. **Step 2 — decide & act (Sonnet 4.6, or Haiku if deadline-only):** fills `reply_draft`, `deadline`, and `next_steps` for the triggers that fired.
 
-Full design notes — agent spec, architecture, design decisions, what's deliberately out of scope, validation, observability, cost, performance — live in [`docs/`](docs/).
+Full design notes — agent spec, architecture, design decisions, what's deliberately out of scope, validation, observability, cost, performance — live in [`docs/`](docs/), with a research deep-dive on date-extraction architecture in [`docs/research/`](docs/research/).
 
 ## Assumptions
 
