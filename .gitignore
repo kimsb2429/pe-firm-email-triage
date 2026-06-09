@@ -7,6 +7,4 @@ venv/
 .idea/
 .vscode/
 *.egg-info/
-docs/OUT_OF_SCOPE.md
-docs/DESIGN_DECISIONS.md
 docs/research/

@@ -4,7 +4,7 @@ Triages a private equity firm's inbox: classifies each email, decides what actio
 
 ## Requirements
 
-The original assessment instructions and sample email data, as received from the client, are in [`docs/requirements/`](docs/requirements/).
+The original assessment brief and sample emails were provided as **Confidential** PDFs and are not committed. [`docs/requirements/`](docs/requirements/) summarizes what was asked.
 
 ## Output
 
@@ -38,7 +38,7 @@ Two-call pipeline per email:
 2. **Skip check (Python):** if no rule will fire, mark read and skip Step 2.
 3. **Step 2 — decide & act (Sonnet 4.6, or Haiku if deadline-only):** fills `reply_draft`, `deadline`, and `next_steps` for the triggers that fired.
 
-Full design notes — agent spec, architecture, validation, observability, cost, performance — live in [`docs/`](docs/).
+Full design notes — agent spec, architecture, design decisions, what's deliberately out of scope, validation, observability, cost, performance — live in [`docs/`](docs/).
 
 ## Assumptions
 
