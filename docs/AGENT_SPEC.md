@@ -2,7 +2,7 @@
 
 Two LLM calls per email, plus a Python skip check between them. Schema field order enforces dependencies within each step.
 
-## Step 1 — Classify
+## Step 1: classify
 
 Input: raw email + the email's `received_at` (for priority reasoning).
 
@@ -25,16 +25,16 @@ class Step1(BaseModel):
 |---|---|
 | **Deal Flow** | New investment opportunity, term sheet, NDA/CIM, co-invest, debt financing for a deal |
 | **Portfolio Update** | Operational, financial, or governance update from a portfolio company |
-| **LP Communication** | Anything to/from a Limited Partner — capital calls, performance reports, commitment changes |
+| **LP Communication** | Anything to/from a Limited Partner: capital calls, performance reports, commitment changes |
 | **Compliance** | Regulatory, legal, audit, or filing requirements |
-| **Internal** | From a firm employee — admin, ops, scheduling, model review, expense |
+| **Internal** | From a firm employee: admin, ops, scheduling, model review, expense |
 | **Press** | Media inquiry, comment request, journalist outreach |
 | **Other** | Recruiters, conferences, vendors, anything else |
 
 Tiebreakers:
-- Bank pitching debt financing for a portco *acquisition* → **Deal Flow** (about a new transaction).
-- LP asking about a capital call → **LP Communication**.
-- DocuSign notification about a deal NDA → **Deal Flow** (the underlying transaction governs).
+- Bank pitching debt financing for a portco *acquisition* → Deal Flow (about a new transaction).
+- LP asking about a capital call → LP Communication.
+- DocuSign notification about a deal NDA → Deal Flow (the underlying transaction governs).
 
 ### Priority
 
@@ -49,7 +49,7 @@ When ambiguous, default to the higher priority.
 ### Signals
 
 - `has_deadline`: true if the email states a date or relative time-bounded ask. "ASAP" without a date does not count.
-- `portco_problem_flagged`: true only when `category == "Portfolio Update"` AND the body indicates a problem at the portco — leadership departure, churn spike, customer crisis, regulatory issue, missed targets without a clean explanation. Routine quarterly updates and board prep are not problems.
+- `portco_problem_flagged`: true only when `category == "Portfolio Update"` AND the body indicates a problem at the portco: leadership departure, churn spike, customer crisis, regulatory issue, missed targets without a clean explanation. Routine quarterly updates and board prep are not problems.
 
 ### Summary
 
@@ -79,9 +79,9 @@ def select_step2_model(s1: Step1) -> str:
     return "claude-sonnet-4-6" if needs_generation else "claude-haiku-4-5"
 ```
 
-Sonnet only when we're generating (replies, next steps). Haiku is fine for pure extraction (deadline only).
+Sonnet only when generating (replies, next steps). Haiku is fine for pure extraction (deadline only).
 
-## Step 2 — Decide and act
+## Step 2: decide and act
 
 Input: raw email + Step 1 output + which triggers fired (computed in Python).
 
@@ -101,18 +101,18 @@ class Deadline(BaseModel):
     action_required: str              # short imperative
 ```
 
-### Rule 1 — High priority → reply_draft
+### Rule 1: high priority → reply_draft
 
 Specific to the email (names, numbers, asks by name). Action-forward (propose a time, confirm a number, name a next step). Short (3–5 sentences). Plausible to send with light edits.
 
-### Rule 2 — has_deadline → deadline
+### Rule 2: has_deadline → deadline
 
 - `deadline_text`: verbatim phrase from the email ("by EOW", "June 30", "this month", "before Thursday").
-- `deadline_date`: ISO `YYYY-MM-DD` in America/New_York. The prompt pins a fixed set of interpretation conventions (e.g. "this week" / "by EOW" → upcoming Friday; "by [weekday]" / "before [weekday]" → that weekday) — see [`prompts/step2_act.v2.md`](../prompts/step2_act.v2.md) for the canonical list. Null when the phrase has no derivable date (e.g. "before the close" with the close date stated elsewhere, or "on time" with no anchor).
-- `deadline_weekday`: weekday name of `deadline_date`. Self-check — Python post-step nulls both `deadline_date` and `deadline_weekday` if `weekday_of(deadline_date) != deadline_weekday`, defending against the documented LLM weekday-arithmetic failure mode. Verbatim text always stays.
+- `deadline_date`: ISO `YYYY-MM-DD` in America/New_York. The prompt pins a fixed set of interpretation conventions (e.g. "this week" / "by EOW" → upcoming Friday; "by [weekday]" / "before [weekday]" → that weekday). See [`prompts/step2_act.v2.md`](../prompts/step2_act.v2.md) for the canonical list. Null when the phrase has no derivable date (e.g. "before the close" with the close date stated elsewhere, or "on time" with no anchor).
+- `deadline_weekday`: weekday name of `deadline_date`. Self-check: Python post-step nulls both `deadline_date` and `deadline_weekday` if `weekday_of(deadline_date) != deadline_weekday`, defending against the documented LLM weekday-arithmetic failure mode. Verbatim text always stays.
 - `action_required`: short imperative.
 
-### Rule 3 — portco_problem_flagged → next_steps
+### Rule 3: portco_problem_flagged → next_steps
 
 2–3 concrete partner actions. Each step references the email's specifics.
 - Bad: "Investigate the issue."
@@ -155,7 +155,7 @@ Specific to the email (names, numbers, asks by name). Action-forward (propose a 
 
 ## Edge cases
 
-- **Linked emails:** Triaged independently. Summaries should make the relationship visible to a human reading the report.
-- **Nullable action fields:** Pydantic `Optional[...]` generates JSON Schema with `anyOf [..., null]`. The model emits `null` for triggers that didn't fire.
-- **Reply tone:** Match the original. Bankers/LPs formal; internal teammates conversational.
-- **Hallucination guardrail:** Drafts and next steps reference only what's in the email body.
+- Linked emails: Triaged independently. Summaries should make the relationship visible to a human reading the report.
+- Nullable action fields: Pydantic `Optional[...]` generates JSON Schema with `anyOf [..., null]`. The model emits `null` for triggers that didn't fire.
+- Reply tone: Match the original. Bankers/LPs formal; internal teammates conversational.
+- Hallucination guardrail: Drafts and next steps reference only what's in the email body.

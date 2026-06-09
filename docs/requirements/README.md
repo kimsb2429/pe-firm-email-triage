@@ -1,6 +1,6 @@
 # Requirements
 
-The original assessment brief and the 20 sample emails were provided as PDFs marked **Confidential**. They are not committed to this public repository.
+The original assessment brief and the 20 sample emails were provided as PDFs marked Confidential. They are not committed to this public repository.
 
 In brief, the assessment asked for an email triage agent for a private equity firm that:
 

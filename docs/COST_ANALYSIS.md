@@ -7,7 +7,7 @@
 | Claude Haiku 4.5 | $1.00 | $5.00 | $0.10 |
 | Claude Sonnet 4.6 | $3.00 | $15.00 | $0.30 |
 
-*Prices estimated — verify on Anthropic's pricing page. Cache writes cost 25% more than base input.*
+*Prices estimated. Verify on Anthropic's pricing page. Cache writes cost 25% more than base input.*
 
 ## Token estimates per call
 
@@ -38,9 +38,9 @@ Three independent end-to-end runs against the 20-email dataset, fresh worktrees,
 | 2 | $0.114 | $0.044 | $0.062 | $0.009 |
 | 3 | $0.112 | $0.044 | $0.060 | $0.009 |
 
-Run-to-run variance under 1% — cost is highly stable.
+Run-to-run variance under 1%: cost is highly stable.
 
-**Observed runs ~2x the $0.05 estimate.** The estimate undersized output tokens (rationale + reply_draft + next_steps pushes Step 2 output higher than the 500-token figure) and per-email Step 2 input tokens ran ~30% above the 450 estimate due to richer email bodies than assumed. The scaling projections table below uses the observed ~$0.113/run figure.
+Observed runs ran ~2x the $0.05 estimate. The estimate undersized output tokens (rationale + reply_draft + next_steps pushes Step 2 output higher than the 500-token figure) and per-email Step 2 input tokens ran ~30% above the 450 estimate due to richer email bodies than assumed. The scaling projections table below uses the observed ~$0.113/run figure.
 
 ## Architecture comparison
 
@@ -74,4 +74,4 @@ Based on the observed ~$0.113/run for 20 emails (~$0.0057/email).
 
 ## Not implemented (production notes)
 
-- **Finer-grained model routing** within Step 2 — e.g., Haiku for short deadline + Sonnet for reply on the same email.
+- Finer-grained model routing within Step 2: e.g., Haiku for short deadline + Sonnet for reply on the same email.

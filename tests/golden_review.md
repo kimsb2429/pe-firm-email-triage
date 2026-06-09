@@ -1,13 +1,13 @@
-# Golden Set — Expected Triage Decisions
+# Golden Set: Expected Triage Decisions
 
 Auto-seeded from the most recent `output/output.json`. Review each email below 
 and flag any decision you'd grade differently. Corrections should be applied to 
 `tests/golden.json` (the regression test reads from there).
 
-**Fields checked:** `category`, `priority`, `has_deadline`, `portco_problem_flagged`, 
+Fields checked: `category`, `priority`, `has_deadline`, `portco_problem_flagged`, 
 and whether each Step 2 action fired (`reply_draft`, `deadline`, `next_steps`).
 
-**Not checked:** the generative outputs (rationale, summary, reply text, next-step text). 
+Not checked: the generative outputs (rationale, summary, reply text, next-step text). 
 Those have natural model variance and are evaluated separately by the LLM grader.
 
 ---
@@ -33,10 +33,10 @@ Those have natural model variance and are evaluated separately by the LLM grader
 > Hi team, attached is our Q1 board pack. Revenue came in at $4.2M, up 18% QoQ. We missed EBITDA by about 8% due to a one-time infrastructure migration cost. Happy to walk through on our next call.
 
 - **Category:** Portfolio Update
-- **Priority:** Medium or Low _(borderline — either accepted)_
+- **Priority:** Medium or Low _(borderline, either accepted)_
 - **has_deadline:** False
 - **portco_problem_flagged:** False
-- **Actions fired:** _(none — marked as read)_
+- **Actions fired:** _(none, marked as read)_
 
 ---
 
@@ -47,10 +47,10 @@ Those have natural model variance and are evaluated separately by the LLM grader
 > We received the capital call notice dated April 28th. Can you confirm the wire instructions and deadline? We want to make sure we process this on time.
 
 - **Category:** LP Communication
-- **Priority:** High or Medium _(borderline — either accepted)_
+- **Priority:** High or Medium _(borderline, either accepted)_
 - **has_deadline:** False
 - **portco_problem_flagged:** False
-- **Actions fired:** reply_draft _(borderline — either fires or doesn't)_
+- **Actions fired:** reply_draft _(borderline, either fires or doesn't)_
 
 ---
 
@@ -64,7 +64,7 @@ Those have natural model variance and are evaluated separately by the LLM grader
 - **Priority:** Low
 - **has_deadline:** False
 - **portco_problem_flagged:** False
-- **Actions fired:** _(none — marked as read)_
+- **Actions fired:** _(none, marked as read)_
 
 ---
 
@@ -92,7 +92,7 @@ Those have natural model variance and are evaluated separately by the LLM grader
 - **Priority:** Medium
 - **has_deadline:** False
 - **portco_problem_flagged:** False
-- **Actions fired:** _(none — marked as read)_
+- **Actions fired:** _(none, marked as read)_
 
 ---
 
@@ -117,10 +117,10 @@ Those have natural model variance and are evaluated separately by the LLM grader
 > A reminder that new SEC rules affecting private fund advisers take effect June 30th. Your compliance team should review the updated Form PF requirements. Please confirm receipt.
 
 - **Category:** Compliance
-- **Priority:** High or Medium _(borderline — either accepted)_
+- **Priority:** High or Medium _(borderline, either accepted)_
 - **has_deadline:** True
 - **portco_problem_flagged:** False
-- **Actions fired:** reply_draft _(borderline — either fires or doesn't)_, deadline
+- **Actions fired:** reply_draft _(borderline, either fires or doesn't)_, deadline
 
 ---
 
@@ -145,10 +145,10 @@ Those have natural model variance and are evaluated separately by the LLM grader
 > Alex Carter, a document has been sent to you for electronic signature. Please review and sign at your earliest convenience.
 
 - **Category:** Deal Flow
-- **Priority:** High or Medium _(borderline — either accepted)_
+- **Priority:** High or Medium _(borderline, either accepted)_
 - **has_deadline:** False
 - **portco_problem_flagged:** False
-- **Actions fired:** reply_draft _(borderline — either fires or doesn't)_
+- **Actions fired:** reply_draft _(borderline, either fires or doesn't)_
 
 ---
 
@@ -246,7 +246,7 @@ Those have natural model variance and are evaluated separately by the LLM grader
 - **Priority:** Low
 - **has_deadline:** False
 - **portco_problem_flagged:** False
-- **Actions fired:** _(none — marked as read)_
+- **Actions fired:** _(none, marked as read)_
 
 ---
 
@@ -257,10 +257,10 @@ Those have natural model variance and are evaluated separately by the LLM grader
 > After our recent conversation I've been authorized to increase our Fund III commitment from $25M to $40M. Please send updated subscription documents when ready.
 
 - **Category:** LP Communication
-- **Priority:** High or Medium _(borderline — either accepted)_
+- **Priority:** High or Medium _(borderline, either accepted)_
 - **has_deadline:** False
 - **portco_problem_flagged:** False
-- **Actions fired:** reply_draft _(borderline — either fires or doesn't)_
+- **Actions fired:** reply_draft _(borderline, either fires or doesn't)_
 
 ---
 
@@ -288,6 +288,6 @@ Those have natural model variance and are evaluated separately by the LLM grader
 - **Priority:** Medium
 - **has_deadline:** False
 - **portco_problem_flagged:** False
-- **Actions fired:** _(none — marked as read)_
+- **Actions fired:** _(none, marked as read)_
 
 ---

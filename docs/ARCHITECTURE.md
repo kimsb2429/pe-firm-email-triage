@@ -102,22 +102,22 @@ Prompts are versioned by filename with the active version selected in `src/promp
 Schemas are Pydantic models. `model_json_schema()` is run through `_strictify_schema()` in `llm.py` to satisfy Anthropic's strict mode requirements (`additionalProperties: false`, all properties in `required`, `$ref` inlining). The model emits schema-valid JSON; Pydantic validates as a tripwire.
 
 ### Validation layers
-Five deterministic Python validation layers — see [VALIDATION.md](VALIDATION.md).
+Five deterministic Python validation layers. See [VALIDATION.md](VALIDATION.md).
 
 ### Error handling
-Per-email `try/except` in `main.py`. One bad email is captured as `status: "error"` on the record and the run continues — preserving the other 19 results. Errors are surfaced in the HTML report.
+Per-email `try/except` in `main.py`. One bad email is captured as `status: "error"` on the record and the run continues, preserving the other 19 results. Errors are surfaced in the HTML report.
 
 ### Observability
 JSONL log (`output/run.log`) with one line per LLM call and per skip event. Run metadata block at the top of `output.json`. End-of-run console summary. Detail: [OBSERVABILITY.md](OBSERVABILITY.md).
 
 ## External dependencies
 
-- **Anthropic API** — Haiku 4.5 (Step 1, deadline-only Step 2), Sonnet 4.6 (generative Step 2)
-- **Pydantic 2.x** — schema definition + JSON Schema generation
-- **No other runtime dependencies**
+- Anthropic API: Haiku 4.5 (Step 1, deadline-only Step 2), Sonnet 4.6 (generative Step 2)
+- Pydantic 2.x: schema definition + JSON Schema generation
+- No other runtime dependencies
 
 Pinned in `requirements.txt`.
 
 ## Tests
 
-`tests/test_golden.py` — deterministic regression check against `tests/golden.json`. No LLM calls. Run after every prompt iteration to catch drift in category/priority/signal decisions.
+`tests/test_golden.py`: deterministic regression check against `tests/golden.json`. No LLM calls. Run after every prompt iteration to catch drift in category/priority/signal decisions.
